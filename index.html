@@ -85,6 +85,19 @@
       margin: 10px 0 5px;
     }
 
+    .photo-slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .photo-slider img {
+      min-width: 100%;
+      border-radius: 10px;
+      scroll-snap-align: start;
+    }
+
     .price {
       color: #a67c7c;
       font-weight: bold;
@@ -196,7 +209,7 @@
   </section>
 
   <section id="contact">
-    <h2>Contact The Crochet Coven</h2>
+    <h2>Contact The Crochet Covern</h2>
 
     <p>
       Have a question, custom order request, or want to purchase an item?
