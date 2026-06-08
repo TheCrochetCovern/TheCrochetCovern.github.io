@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seasonal | The Crochet Covern</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+
+<body>
+
+<header>
+  <h1>The Crochet Covern</h1>
+  <p>Seasonal Collection</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="newborn.html">Newborn Safe</a>
+  <a href="toys.html">3+</a>
+  <a href="seasonal.html">Seasonal</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<h2 class="section-title">🎃 Seasonal Collection</h2>
+<p class="section-note">
+  Limited edition crochet creations for Easter, Halloween, Christmas and cosy seasonal gifting.
+</p>
+
+<h3 class="section-title" style="font-size:22px;">🐰 Easter Collection</h3>
+<p class="section-note">
+  Spring-themed crochet gifts, bunnies, chicks, eggs and more.
+</p>
+
+<section class="products">
+
+  <!-- Easter products go here -->
+
+</section>
+
+<h3 class="section-title" style="font-size:22px;">🎃 Halloween Collection</h3>
+<p class="section-note">
+  Spooky, cute and magical crochet creations.
+</p>
+
+<section class="products">
+ <p class="section-note">
+    Seasonal products coming soon.
+  </p>
+</section>
+
+<h3 class="section-title" style="font-size:22px;">🎄 Christmas Collection</h3>
+<p class="section-note">
+  Festive crochet gifts, decorations and winter companions.
+</p>
+
+<section class="products">
+
+  <div class="card">
+    <img src="gonk.jpg" alt="Crochet Christmas Gonk">
+
+    <h3>Christmas Gonk</h3>
+
+    <p>
+      A handmade crochet Christmas gonk full of festive charm and holiday magic.
+      With no eyes, this piece is suitable from newborn.
+    </p>
+
+    <p><strong>Suitable from:</strong> Newborn</p>
+    <p><strong>Stock:</strong> 1 Available</p>
+    <p class="price">£16.00</p>
+
+    <button class="btn" onclick="orderProduct('Christmas Gonk')">
+      Order
+    </button>
+
+    <p style="font-size:12px;color:#7a6a6a;">
+      📦 Posted within 1–3 working days after payment.
+    </p>
+
+    <p style="font-size:12px;color:#7a6a6a;">
+      🌍 UK & International Shipping Available
+    </p>
+  </div>
+
+  <div class="card">
+    <div class="photo-slider">
+      <img src="snowman-1.jpg" alt="Crochet Snowman">
+      <img src="snowman-2.jpg" alt="Crochet Snowman">
+    </div>
+
+    <h3>Snowman</h3>
+
+    <p>
+      A handmade crochet snowman full of festive charm.
+      Perfect as a Christmas decoration, stocking filler, or cosy winter companion.
+    </p>
+
+    <p><strong>Suitable from:</strong> 3+</p>
+    <p><strong>Stock:</strong> 1 Available</p>
+    <p class="price">£8.00</p>
+
+    <button class="btn" onclick="orderProduct('Snowman')">
+      Order
+    </button>
+
+    <p style="font-size:12px;color:#7a6a6a;">
+      📦 Posted within 1–3 working days after payment.
+    </p>
+
+    <p style="font-size:12px;color:#7a6a6a;">
+      🌍 UK & International Shipping Available
+    </p>
+  </div>
+
+  <div class="card">
+    <div class="photo-slider">
+      <img src="pigs-in-blankets-1.jpg" alt="Crochet Pig in Blanket">
+      <img src="pigs-in-blankets-2.jpg" alt="Crochet Pig in Blanket">
+      <img src="pigs-in-blankets-3.jpg" alt="Crochet Pig in Blanket">
+    </div>
+
+    <h3>Pigs in Blankets</h3>
+
+    <p>
+      Adorable handmade crochet pigs tucked snugly into their own little blankets.
+      Inspired by the festive favourite, these make a quirky Christmas gift,
+      stocking filler, or seasonal decoration.
+    </p>
+
+    <p><strong>Suitable from:</strong> 3+</p>
+    <p><strong>Stock:</strong> 3 Available</p>
+    <p class="price">£6.00 each</p>
+
+    <button class="btn" onclick="orderProduct('Pigs in Blankets')">
+      Order
+    </button>
+
+    <p style="font-size:12px;color:#7a6a6a;">
+      📦 Posted within 1–3 working days after payment.
+    </p>
+
+    <p style="font-size:12px;color:#7a6a6a;">
+      🌍 UK & International Shipping Available
+    </p>
+  </div>
+
+</section>
+
+<footer>
+  © 2026 The Crochet Covern • Handmade with care
+</footer>
+
+<script>
+function orderProduct(productName) {
+  const email = "melodiewarrender@gmail.com";
+  const subject = "Order - " + productName;
+
+  const body =
+`Hello The Crochet Covern,
+
+I would like to place an order for ${productName}.
+
+Name:
+
+Address:
+
+Quantity:
+
+Payment Method: (PayPal / Bank Transfer)
+
+Preferred Contact Method: (Email / Phone / Instagram)
+
+Special Notes:
+
+
+Shipping Information:
+UK delivery starts from £0.99.
+International delivery typically ranges from £5–£10+.
+Exact shipping costs will be confirmed before payment.
+
+
+Thank you for supporting The Crochet Covern.
+
+My name is Melodie, and every piece is handmade with care, attention, and a genuine love for crochet. Your support means so much, and I hope your new forever friend brings you joy for years to come.
+
+Dispatch Information:
+Orders are typically posted within 1–3 working days after payment.`;
+
+  window.location.href =
+    `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+</script>
+
+</body>
+</html>
