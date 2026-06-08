@@ -60,47 +60,12 @@
       margin: auto;
       color: #6b5b5b;
     }
- <section class="products" id="shop">
-<div class="card">
-  <img src="flowerfrog.jpg" alt="Pastel Crochet Flower Frog">
 
-  <h3>Pastel Flower Frog</h3>
-
-  <p>
-    A handmade crochet flower frog in soft pastel pink and mint green.
-    Perfect as a desk companion, gift, or cute collectible.
-  </p>
-
-  <p><strong>Stock:</strong> 1 Available</p>
-
-  <p class="price">£9.50</p>
-
-  <a class="btn"
-     href="mailto:melodiewarrender@gmail.com?subject=Order%20-%20Pastel%20Flower%20Frog">
-     Order
-  </a>
-</div>
-    
-<div class="card">
-  <img src="cow-onesie.jpg" alt="Crochet Cow in Onesie Plushie">
-
-  <h3>Cow in Onesie</h3>
-
-  <p>
-    A large handmade crochet cow plushie wearing an adorable blue onesie.
-    Made from super soft plush yarn and perfect as a cuddly companion or gift.
-  </p>
-
-  <p><strong>Stock:</strong> 1 Available</p>
-
-  <p class="price">£40.00</p>
-
-  <a class="btn"
-     href="mailto:melodiewarrender@gmail.com?subject=Order%20-%20Cow%20in%20Onesie">
-     Order
-  </a>
-</div> 
-   </section>
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 40px;
     }
 
     .card {
@@ -130,11 +95,20 @@
       margin-top: 10px;
       padding: 8px 12px;
       background: #e8dcd6;
-      border: none;
       border-radius: 8px;
       text-decoration: none;
       color: #3b2f2f;
       font-size: 14px;
+    }
+
+    #contact {
+      padding: 60px 20px;
+      text-align: center;
+      background: #fff;
+    }
+
+    #contact a {
+      color: #3b2f2f;
     }
 
     footer {
@@ -157,7 +131,7 @@
     <a href="#">Home</a>
     <a href="#shop">Shop</a>
     <a href="#contact">Contact</a>
-    <a href="#">Instagram</a>
+    <a href="https://instagram.com/lowkeymelode" target="_blank">Instagram</a>
   </nav>
 
   <section class="hero">
@@ -168,53 +142,67 @@
     </p>
   </section>
 
-<section id="contact" style="padding: 60px 20px; text-align: center; background: #fff;">
+  <section class="products" id="shop">
 
-  <h2>Contact The Crochet Coven</h2>
+    <div class="card">
+      <img src="flowerfrog.jpg" alt="Pastel Crochet Flower Frog">
+      <h3>Pastel Flower Frog</h3>
+      <p>
+        A handmade crochet flower frog in soft pastel pink and mint green.
+        Perfect as a desk companion, gift, or cute collectible.
+      </p>
+      <p><strong>Stock:</strong> 1 Available</p>
+      <p class="price">£9.50</p>
+      <a class="btn" href="mailto:melodiewarrender@gmail.com?subject=Order%20-%20Pastel%20Flower%20Frog">
+        Order
+      </a>
+    </div>
 
-  <p>
-    Have a question, custom order request, or want to purchase an item?
-    I'd love to hear from you!
-  </p>
+    <div class="card">
+      <img src="cow-onesie.jpg" alt="Crochet Cow in Onesie Plushie">
+      <h3>Cow in Onesie</h3>
+      <p>
+        A large handmade crochet cow plushie wearing an adorable blue onesie.
+        Made from super soft plush yarn and perfect as a cuddly companion or gift.
+      </p>
+      <p><strong>Stock:</strong> 1 Available</p>
+      <p class="price">£40.00</p>
+      <a class="btn" href="mailto:melodiewarrender@gmail.com?subject=Order%20-%20Cow%20in%20Onesie">
+        Order
+      </a>
+    </div>
 
-  <br>
+  </section>
 
-  <p><strong>Email:</strong></p>
-  <p>
-    <a href="mailto:melodiewarrender@gmail.com">
-      melodiewarrender@gmail.com
-    </a>
-  </p>
+  <section id="contact">
+    <h2>Contact The Crochet Coven</h2>
 
-  <p><strong>Phone:</strong></p>
-  <p>
-    <a href="tel:07921328618">
-      07921328618
-    </a>
-  </p>
+    <p>
+      Have a question, custom order request, or want to purchase an item?
+      I'd love to hear from you!
+    </p>
 
-  <p><strong>Instagram:</strong></p>
-  <p>
-    <a href="https://instagram.com/lowkeymelode" target="_blank">
-      @lowkeymelode
-    </a>
-  </p>
+    <p><strong>Email:</strong><br>
+      <a href="mailto:melodiewarrender@gmail.com">melodiewarrender@gmail.com</a>
+    </p>
 
-  <p><strong>TikTok:</strong></p>
-  <p>
-    <a href="https://tiktok.com/@lowkeymelodie" target="_blank">
-      @lowkeymelodie
-    </a>
-  </p>
+    <p><strong>Phone:</strong><br>
+      <a href="tel:07921328618">07921328618</a>
+    </p>
 
-  <p><strong>Facebook:</strong></p>
-  <p>
-    <a href="https://facebook.com/lowkeymelodie" target="_blank">
-      @lowkeymelodie
-    </a>
-  </p>
+    <p><strong>Instagram:</strong><br>
+      <a href="https://instagram.com/lowkeymelodie" target="_blank">@lowkeymelode</a>
+    </p>
 
-</section>
+    <p><strong>TikTok:</strong><br>
+      <a href="https://tiktok.com/@lowkeymelodie" target="_blank">@lowkeymelodie</a>
+    </p>
+
+    <p><strong>Facebook:</strong><br>
+      <a href="https://facebook.com/lowkeymelodie" target="_blank">@lowkeymelodie</a>
+    </p>
+  </section>
+
   <footer>
     © 2026 The Crochet Coven • Handmade with care
   </footer>
