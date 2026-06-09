@@ -1,6 +1,6 @@
 header {
   background: #e8dcd6;
-  padding: 60px 20px;
+  padding: 70px 20px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -9,29 +9,27 @@ header {
 header::before {
   content: "";
   position: absolute;
-  top: -10px;
-  left: 180px;
-
-  width: 180px;
-  height: 220px;
-
+  top: 0;
+  left: 140px;
+  width: 420px;
+  height: 240px;
   background: url("left-vine_transparent.png") no-repeat top left;
   background-size: contain;
   pointer-events: none;
+  opacity: 0.9;
 }
 
 header::after {
   content: "";
   position: absolute;
-  top: -5px;
-  right: 140px;
-
-  width: 220px;
-  height: 180px;
-
+  top: 0;
+  right: 120px;
+  width: 520px;
+  height: 240px;
   background: url("right-vine_transparent.png") no-repeat top right;
   background-size: contain;
   pointer-events: none;
+  opacity: 0.9;
 }
 
 body {
