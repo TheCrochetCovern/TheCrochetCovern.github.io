@@ -10,24 +10,30 @@ header::before {
   content: "";
   position: absolute;
   top: 0;
-  left: 0;
-  width: 450px;
-  height: 300px;
+  left: 210px;
+
+  width: 260px;
+  height: 260px;
+
   background: url("left-vine_transparent.png") no-repeat top left;
   background-size: contain;
   pointer-events: none;
+  opacity: 0.85;
 }
 
 header::after {
   content: "";
   position: absolute;
   top: 0;
-  right: -50px;
-  width: 220px;
-  height: 300px;
+  right: -95px;
+
+  width: 520px;
+  height: 260px;
+
   background: url("right-vine_transparent.png") no-repeat top right;
   background-size: contain;
   pointer-events: none;
+  opacity: 0.85;
 }
 
 body {
