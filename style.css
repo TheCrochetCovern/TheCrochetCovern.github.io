@@ -6,9 +6,10 @@ body::before {
   width: 100%;
   height: 320px;
   background: url("vines_transparent.png") no-repeat top center;
-  background-size: cover;
+  background-size: contain;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 999;
+  opacity: 0.8;
 }
 
 body {
