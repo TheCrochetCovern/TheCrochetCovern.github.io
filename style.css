@@ -11,8 +11,8 @@ header::before {
   position: absolute;
   top: 0;
   left: 15%;
-  width: 1250px;
-  height: 680px;
+  width: 1500px;
+  height: 700px;
   background: url("left-vine_transparent.png") no-repeat top left;
   background-size: contain;
   pointer-events: none;
