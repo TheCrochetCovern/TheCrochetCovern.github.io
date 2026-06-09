@@ -5,6 +5,61 @@ body {
     #faf7f5;
   background-size: 120px 120px;
 }
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  width: 140px;
+  height: 350px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+body::before {
+  left: 0;
+  background:
+    radial-gradient(circle at 40px 40px, #cfe8cf 0 12px, transparent 13px),
+    radial-gradient(circle at 70px 90px, #cfe8cf 0 10px, transparent 11px),
+    radial-gradient(circle at 30px 150px, #cfe8cf 0 14px, transparent 15px),
+    radial-gradient(circle at 80px 220px, #cfe8cf 0 12px, transparent 13px),
+    linear-gradient(#b7d8b7, #b7d8b7);
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0,
+    50px 0;
+}
+
+body::after {
+  right: 0;
+  background:
+    radial-gradient(circle at 90px 40px, #cfe8cf 0 12px, transparent 13px),
+    radial-gradient(circle at 50px 100px, #cfe8cf 0 10px, transparent 11px),
+    radial-gradient(circle at 100px 170px, #cfe8cf 0 14px, transparent 15px),
+    radial-gradient(circle at 40px 240px, #cfe8cf 0 12px, transparent 13px),
+    linear-gradient(#b7d8b7, #b7d8b7);
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0,
+    70px 0;
+}
+
+header,
+nav,
+section,
+footer {
+  position: relative;
+  z-index: 2;
+}
 
 header {
   background: #e8dcd6;
