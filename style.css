@@ -1,8 +1,9 @@
 body {
-  margin: 0;
-  font-family: Georgia, serif;
-  background: #faf7f5;
-  color: #3b2f2f;
+  background:
+    radial-gradient(circle at 20% 20%, #f5ece8 2px, transparent 2px),
+    radial-gradient(circle at 80% 60%, #f5ece8 2px, transparent 2px),
+    #faf7f5;
+  background-size: 120px 120px;
 }
 
 header {
