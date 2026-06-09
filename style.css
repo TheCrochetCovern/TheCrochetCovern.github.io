@@ -5,22 +5,28 @@ header {
   position: relative;
   overflow: hidden;
 }
+
 header::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 250px;
+  width: 220px;
+  height: 300px;
+  background: url("left-vine_transparent.png") no-repeat top left;
+  background-size: contain;
+  pointer-events: none;
+}
 
-  background-image: url("vines_transparent.png");
-  background-repeat: no-repeat;
-  background-position: top center;
-
-  /* Controls size */
-  background-size: 1400px auto;
-
-  opacity: 0.7;
+header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 220px;
+  height: 300px;
+  background: url("right-vine_transparent.png") no-repeat top right;
+  background-size: contain;
   pointer-events: none;
 }
 
