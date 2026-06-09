@@ -11,8 +11,8 @@ header::before {
   position: absolute;
   top: 0;
   left: 140px;
-  width: 420px;
-  height: 240px;
+  width: 500px;
+  height: 320px;
   background: url("left-vine_transparent.png") no-repeat top left;
   background-size: contain;
   pointer-events: none;
@@ -24,8 +24,8 @@ header::after {
   position: absolute;
   top: 0;
   right: 120px;
-  width: 520px;
-  height: 240px;
+  width: 600px;
+  height: 320px;
   background: url("right-vine_transparent.png") no-repeat top right;
   background-size: contain;
   pointer-events: none;
