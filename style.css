@@ -9,9 +9,9 @@ header {
 header::before {
   content: "";
   position: absolute;
-  top: -10;
+  top: 10;
   left: 250px;
-  width: 850px;
+  width: 950px;
   height: 620px;
   background: url("left-vine_transparent.png") no-repeat top left;
   background-size: contain;
@@ -24,8 +24,8 @@ header::after {
   position: absolute;
   top: 0;
   right: 120px;
-  width: 1080px;
-  height: 700px;
+  width: 1280px;
+  height: 900px;
   background: url("right-vine_transparent.png") no-repeat top right;
   background-size: contain;
   pointer-events: none;
