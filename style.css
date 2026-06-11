@@ -1,3 +1,412 @@
+
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #faf7f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  animation: fadeOut 1.2s ease forwards;
+  animation-delay: 2.5s;
+}
+
+#loader h1 {
+  font-size: 42px;
+  letter-spacing: 2px;
+  margin: 0;
+  animation: floatIn 1.2s ease forwards;
+}
+
+#loader p {
+  font-style: italic;
+  color: #7a6a6a;
+  margin-top: 10px;
+  animation: floatIn 1.5s ease forwards;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* WEBSITE STYLING */
+
+header {
+  background: #e8dcd6;
+  padding: 70px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  width: 1500px;
+  height: 700px;
+  background: url("left-vine_transparent.png") no-repeat top left;
+  background-size: contain;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 1%;
+  width: 1480px;
+  height: 900px;
+  background: url("right-vine_transparent.png") no-repeat top right;
+  background-size: contain;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 1%;
+  width: 1480px;
+  height: 900px;
+  background: url("right-vine_transparent.png") no-repeat top right;
+  background-size: contain;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+body {
+  background:
+    radial-gradient(circle at 20% 20%, #f5ece8 2px, transparent 2px),
+    radial-gradient(circle at 80% 60%, #f5ece8 2px, transparent 2px),
+    #faf7f5;
+  background-size: 120px 120px;
+
+}
+header,
+nav,
+section,
+footer {
+  position: relative;
+  z-index: 2;
+}
+
+header {
+  background: #e8dcd6;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 42px;
+  letter-spacing: 2px;
+}
+
+header p {
+  font-style: italic;
+  margin-top: 10px;
+  color: #5a4a4a;
+}
+
+nav {
+  text-align: center;
+  padding: 15px;
+  background: white;
+  border-bottom: 1px solid #e6e0dd;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #3b2f2f;
+  font-size: 14px;
+}
+
+.hero {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 28px;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: auto;
+  color: #6b5b5b;
+}
+
+.section-title {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 26px;
+}
+
+.section-note {
+  text-align: center;
+  color: #6b5b5b;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.card h3 {
+  margin: 10px 0;
+}
+
+.photo-slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  scroll-snap-type: x mandatory;
+}
+
+.photo-slider img {
+  min-width: 100%;
+  scroll-snap-align: start;
+}
+
+.price {
+  color: #a67c7c;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #e8dcd6;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #3b2f2f;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background: #ddcdc6;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 12px;
+  color: #7a6a6a;
+}
+
+header {
+  background: #e8dcd6;
+  padding: 70px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  width: 1500px;
+  height: 700px;
+  background: url("left-vine_transparent.png") no-repeat top left;
+  background-size: contain;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 1%;
+  width: 1480px;
+  height: 900px;
+  background: url("right-vine_transparent.png") no-repeat top right;
+  background-size: contain;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+body {
+  background:
+    radial-gradient(circle at 20% 20%, #f5ece8 2px, transparent 2px),
+    radial-gradient(circle at 80% 60%, #f5ece8 2px, transparent 2px),
+    #faf7f5;
+  background-size: 120px 120px;
+
+}
+header,
+nav,
+section,
+footer {
+  position: relative;
+  z-index: 2;
+}
+
+header {
+  background: #e8dcd6;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 42px;
+  letter-spacing: 2px;
+}
+
+header p {
+  font-style: italic;
+  margin-top: 10px;
+  color: #5a4a4a;
+}
+
+nav {
+  text-align: center;
+  padding: 15px;
+  background: white;
+  border-bottom: 1px solid #e6e0dd;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #3b2f2f;
+  font-size: 14px;
+}
+
+.hero {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 28px;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: auto;
+  color: #6b5b5b;
+}
+
+.section-title {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 26px;
+}
+
+.section-note {
+  text-align: center;
+  color: #6b5b5b;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.card h3 {
+  margin: 10px 0;
+}
+
+.photo-slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  scroll-snap-type: x mandatory;
+}
+
+.photo-slider img {
+  min-width: 100%;
+  scroll-snap-align: start;
+}
+
+.price {
+  color: #a67c7c;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #e8dcd6;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #3b2f2f;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background: #ddcdc6;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 12px;
+  color: #7a6a6a;
+}
+
 header {
   background: #e8dcd6;
   padding: 70px 20px;
