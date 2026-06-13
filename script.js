@@ -37,3 +37,42 @@ Orders are typically posted within 1–3 working days after payment.`;
   window.location.href =
     `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
+
+
+/* APP INSTALL BUTTON */
+
+let deferredPrompt;
+
+window.addEventListener("beforeinstallprompt", event => {
+  event.preventDefault();
+  deferredPrompt = event;
+
+  const installBtn = document.getElementById("installBtn");
+
+  if (installBtn) {
+    installBtn.style.display = "inline-block";
+
+    installBtn.addEventListener("click", async () => {
+      if (!deferredPrompt) return;
+
+      deferredPrompt.prompt();
+
+      const choiceResult = await deferredPrompt.userChoice;
+
+      if (choiceResult.outcome === "accepted") {
+        installBtn.style.display = "none";
+      }
+
+      deferredPrompt = null;
+    });
+  }
+});
+
+
+/* SERVICE WORKER */
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("service-worker.js");
+  });
+}
