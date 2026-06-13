@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="style.css">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#e8dcd6">
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 </head>
   
 <body>
@@ -124,10 +124,5 @@
   © 2026 The Crochet Covern • Handmade with care
 </footer>
   
-<script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("service-worker.js");
-  }
-</script>
 </body>
 </html>
