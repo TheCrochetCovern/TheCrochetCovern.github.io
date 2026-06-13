@@ -1,0 +1,22 @@
+{
+  "name": "The Crochet Covern",
+  "short_name": "Crochet Covern",
+  "description": "Handmade crochet plushies, newborn-safe makes, and seasonal creations by Melodie.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#faf7f5",
+  "theme_color": "#e8dcd6",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
