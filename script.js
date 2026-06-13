@@ -22,14 +22,14 @@ Special Notes:
 
 
 Shipping Information:
-UK delivery starts from £0.99.
+UK delivery free.
 International delivery typically ranges from £5–£10+.
 Exact shipping costs will be confirmed before payment.
 
 
-Thank you for supporting The Crochet Covern.
 
 My name is Melodie, and every piece is handmade with care, attention, and a genuine love for crochet. Your support means so much, and I hope your new forever friend brings you joy for years to come.
+Thank you for supporting The Crochet Covern.
 
 Dispatch Information:
 Orders are typically posted within 1–3 working days after payment.`;
