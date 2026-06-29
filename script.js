@@ -93,7 +93,7 @@ const installBtn = document.getElementById("installBtn");
 if (installBtn) {
 installBtn.style.display = "inline-block";
 
-```
+
 installBtn.addEventListener("click", async () => {
   if (!deferredPrompt) return;
 
@@ -107,7 +107,7 @@ installBtn.addEventListener("click", async () => {
 
   deferredPrompt = null;
 });
-```
+
 
 }
 });
