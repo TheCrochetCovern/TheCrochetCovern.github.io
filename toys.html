@@ -329,7 +329,7 @@ Order
 <button class="btn"
 onclick="orderProduct(
 'Pastel Flower Frog',
-'9.00',
+'9.50',
 'flowerfrog.jpg',
 '3+',
 '1 Available',
@@ -370,7 +370,7 @@ Order
  <button class="btn"
 onclick="orderProduct(
 'Mini Cow Collection',
-'6.00',
+'6.00 each',
 'cow-collection-1.jpg',
 '3+',
 '3 Available',
@@ -393,6 +393,44 @@ Order
 <footer>
 © 2026 The Crochet Covern • Handmade with care
 </footer>
+<div id="orderModal" class="order-modal">
+    <div class="order-box">
 
+        <button class="close-modal" onclick="closeOrderModal()">×</button>
+
+        <span class="handmade">Handmade by Melodie</span>
+
+        <img id="modalImage" class="modal-product-img">
+
+        <h2 id="modalProductName"></h2>
+
+        <p id="modalPrice" class="price"></p>
+
+        <p class="order-detail">
+            <strong>Suitable from:</strong>
+            <span id="modalSuitable"></span>
+        </p>
+
+        <p class="order-detail">
+            <strong>Stock:</strong>
+            <span id="modalStock"></span>
+        </p>
+
+        <div class="order-actions">
+            <button class="btn pay-btn" onclick="payOrder()">
+                🛒 Pay Now
+            </button>
+
+            <button class="btn contact-btn" onclick="contactOrder()">
+                💌 Contact Melodie
+            </button>
+
+            <button class="btn cancel-btn" onclick="closeOrderModal()">
+                Continue Shopping
+            </button>
+        </div>
+
+    </div>
+</div>
 </body>
 </html>
