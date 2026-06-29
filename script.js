@@ -42,7 +42,7 @@ alert("Payment link coming soon. Please contact me to order.");
 }
 
 function contactOrder() {
-const email = "[melodiewarrender@gmail.com](mailto:melodiewarrender@gmail.com)";
+const email = "melodiewarrender@gmail.com";
 const subject = "Order - " + selectedProduct.name;
 
 const body =
