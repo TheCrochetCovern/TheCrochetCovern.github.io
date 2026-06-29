@@ -1094,6 +1094,13 @@ box-shadow:
 
 }
 
+.btn:active{
+
+transform:scale(.93);
+
+transition:.08s;
+
+}
 
 
 /*==================================================
