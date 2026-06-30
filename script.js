@@ -10,14 +10,7 @@ let selectedProduct = {
 };
 
 function orderProduct(name, price, image, suitable, stock, sumupLink) {
-  selectedProduct = {
-    name: name,
-    price: price,
-    image: image,
-    suitable: suitable,
-    stock: stock,
-    sumup: sumupLink
-  };
+  selectedProduct = { name, price, image, suitable, stock, sumup: sumupLink };
 
   document.getElementById("modalProductName").textContent = name;
   document.getElementById("modalPrice").textContent = "£" + price;
@@ -25,6 +18,10 @@ function orderProduct(name, price, image, suitable, stock, sumupLink) {
   document.getElementById("modalImage").alt = name;
   document.getElementById("modalSuitable").textContent = suitable;
   document.getElementById("modalStock").textContent = stock;
+
+  document.getElementById("orderFormProduct").value = name;
+  document.getElementById("orderFormPrice").value = "£" + price;
+  document.getElementById("orderFormSumUp").value = sumupLink;
 
   document.getElementById("orderModal").style.display = "flex";
   document.body.classList.add("modal-open");
@@ -35,70 +32,31 @@ function closeOrderModal() {
   document.body.classList.remove("modal-open");
 }
 
-function payOrder() {
-  if (selectedProduct.sumup) {
-    window.open(selectedProduct.sumup, "_blank");
-  } else {
-    alert("Payment link coming soon. Please contact me to order.");
-  }
-}
-
 function contactOrder() {
-  const email = "melodiewarrender@gmail.com";
-  const subject = "Order - " + selectedProduct.name;
-
-  const body =
-`Hello The Crochet Covern,
-
-I would like to place an order for ${selectedProduct.name}.
-
-Price: £${selectedProduct.price}
-
-Name:
-
-Address:
-
-Quantity:
-
-Payment Method: (PayPal / Bank Transfer / SumUp)
-
-Preferred Contact Method: (Email / Phone / Instagram)
-
-Special Notes:
-
-
-Shipping Information:
-UK delivery free.
-International delivery typically ranges from £5–£10+.
-Exact shipping costs will be confirmed before payment.
-
-
-My name is Melodie, and every piece is handmade with care, attention, and a genuine love for crochet. Your support means so much, and I hope your new forever friend brings you joy for years to come.
-
-Thank you for supporting The Crochet Covern.
-
-Dispatch Information:
-Orders are typically posted within 1–3 working days after payment.`;
-
   window.location.href =
-    `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    "mailto:thecrochetcovern@gmail.com?subject=" +
+    encodeURIComponent("Order Enquiry - " + selectedProduct.name);
 }
 
-/* CLOSE POPUP BY CLICKING OUTSIDE */
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("checkoutForm");
 
-window.addEventListener("click", event => {
-  const modal = document.getElementById("orderModal");
+  if (form) {
+    form.addEventListener("submit", async event => {
+      event.preventDefault();
 
-  if (modal && event.target === modal) {
-    closeOrderModal();
-  }
-});
+      const formData = new FormData(form);
 
-/* CLOSE POPUP WITH ESC KEY */
+      await fetch("https://formspree.io/f/xlgywnqv", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json"
+        }
+      });
 
-window.addEventListener("keydown", event => {
-  if (event.key === "Escape") {
-    closeOrderModal();
+      window.location.href = selectedProduct.sumup;
+    });
   }
 });
 
