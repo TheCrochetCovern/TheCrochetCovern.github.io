@@ -1521,3 +1521,29 @@ nav a,
 .order-actions button {
   cursor: url("crochet-hook-cursor.png") 4 4, pointer;
 }
+
+/*==================================================
+            CHECKOUT FORM
+==================================================*/
+
+#checkoutForm {
+  display: grid;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+#checkoutForm input,
+#checkoutForm textarea {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #ead8d2;
+  border-radius: 12px;
+  font-family: Georgia, serif;
+  background: #fffaf8;
+  color: #3b2f2f;
+}
+
+#checkoutForm textarea {
+  min-height: 75px;
+  resize: vertical;
+}
