@@ -1,27 +1,21 @@
-const CACHE_NAME = "crochet-covern-cache-v1";
-
-const urlsToCache = [
-  "./",
-  "index.html",
-  "newborn.html",
-  "toys.html",
-  "seasonal.html",
-  "contact.html",
-  "style.css",
-  "script.js",
-  "manifest.json",
-  "icon-192.png",
-  "icon-512.png"
-];
+const CACHE_NAME = "crochet-covern-v2";
 
 self.addEventListener("install", event => {
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => caches.delete(cacheName))
+      );
+    })
   );
+
+  self.clients.claim();
 });
 
 self.addEventListener("fetch", event => {
-  event.respondWith(
-    caches.match(event.request).then(response => response || fetch(event.request))
-  );
+  event.respondWith(fetch(event.request));
 });
