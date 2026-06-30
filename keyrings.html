@@ -88,44 +88,55 @@ Order
 </footer>
 
 <div id="orderModal" class="order-modal">
-<div class="order-box">
+  <div class="order-box">
 
-<button class="close-modal" onclick="closeOrderModal()">×</button>
+    <button class="close-modal" onclick="closeOrderModal()">×</button>
 
-<span class="handmade">Handmade by Melodie</span>
+    <span class="handmade">Handmade by Melodie</span>
 
-<img id="modalImage" class="modal-product-img" alt="Selected crochet product">
+    <img id="modalImage" class="modal-product-img" alt="Selected crochet product">
 
-<h2 id="modalProductName"></h2>
+    <h2 id="modalProductName"></h2>
+    <p id="modalPrice" class="price"></p>
 
-<p id="modalPrice" class="price"></p>
+    <p class="order-detail">
+      <strong>Suitable from:</strong>
+      <span id="modalSuitable"></span>
+    </p>
 
-<p class="order-detail">
-<strong>Suitable from:</strong>
-<span id="modalSuitable"></span>
-</p>
+    <p class="order-detail">
+      <strong>Stock:</strong>
+      <span id="modalStock"></span>
+    </p>
 
-<p class="order-detail">
-<strong>Stock:</strong>
-<span id="modalStock"></span>
-</p>
+    <form id="checkoutForm">
+      <input type="hidden" name="Product" id="orderFormProduct">
+      <input type="hidden" name="Price" id="orderFormPrice">
+      <input type="hidden" name="SumUp Link" id="orderFormSumUp">
 
-<div class="order-actions">
+      <input type="text" name="Full Name" placeholder="Full name" required>
+      <input type="email" name="Email" placeholder="Email address" required>
+      <input type="text" name="Address" placeholder="Address" required>
+      <input type="text" name="Town or City" placeholder="Town / City" required>
+      <input type="text" name="Postcode" placeholder="Postcode" required>
+      <textarea name="Order Notes" placeholder="Order notes, colour choice, or delivery notes"></textarea>
 
-<button class="btn pay-btn" onclick="payOrder()">
-🛒 Pay Now
-</button>
+      <div class="order-actions">
+        <button class="btn pay-btn" type="submit">
+          🛒 Continue to Payment
+        </button>
 
-<button class="btn contact-btn" onclick="contactOrder()">
-💌 Contact Melodie
-</button>
+        <button class="btn contact-btn" type="button" onclick="contactOrder()">
+          💌 Contact Melodie
+        </button>
 
-<button class="btn cancel-btn" onclick="closeOrderModal()">
-Continue Shopping
-</button>
+        <button class="btn cancel-btn" type="button" onclick="closeOrderModal()">
+          Continue Shopping
+        </button>
+      </div>
+    </form>
 
-</div>
-
+  </div>
 </div>
 </div>
 
