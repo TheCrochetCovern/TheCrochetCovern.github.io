@@ -1549,7 +1549,7 @@ nav a,
 }
 /* FLOATING CART BUTTON */
 
-nav .btn {
+.cart-btn {
   position: fixed;
   top: 20px;
   right: 15px;
