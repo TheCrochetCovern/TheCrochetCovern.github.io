@@ -17,6 +17,7 @@ export default async function handler(req, res) {
 
   try {
     const { amount, description } = req.body;
+    const checkoutRef = "TCC-" + Date.now();
 
     const response = await fetch("https://api.sumup.com/v0.1/checkouts", {
       method: "POST",
@@ -25,7 +26,7 @@ export default async function handler(req, res) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        checkout_reference: "TCC-" + Date.now(),
+        checkout_reference: checkoutRef,
         amount: Number(amount),
         currency: "GBP",
         merchant_code: "MJNF1P3K",
@@ -33,7 +34,7 @@ export default async function handler(req, res) {
         hosted_checkout: {
           enabled: true
         },
-        redirect_url: `https://thecrochetcovern.github.io/?checkout_id=${data?.id}`
+       redirect_url: `https://thecrochetcovern.github.io/?checkout=${checkoutRef}`
       })
     });
 
