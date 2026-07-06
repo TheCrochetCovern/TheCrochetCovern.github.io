@@ -197,10 +197,15 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          amount: priceToNumber(selectedProduct.price),
-          description: selectedProduct.name
-        })
+        
+       body: JSON.stringify({
+  amount: priceToNumber(selectedProduct.price),
+  description: selectedProduct.name,
+  items: cart.length > 0 && selectedProduct.name.startsWith("Cart Order")
+    ? cart
+    : [{ name: selectedProduct.name }]
+})
+        
       });
 
       const checkoutData = await checkoutResponse.json();
