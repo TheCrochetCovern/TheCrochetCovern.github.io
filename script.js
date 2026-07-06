@@ -301,3 +301,64 @@ function chooseMiniCowColour() {
     "1 Available"
   );
 }
+/* PAYMENT RETURN CHECK */
+
+window.addEventListener("load", async () => {
+  const params = new URLSearchParams(window.location.search);
+  const checkoutRef = params.get("checkout");
+
+  if (!checkoutRef) return;
+
+  const messageBox = document.createElement("div");
+
+  messageBox.style.cssText = `
+    position: fixed;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #e8dcd6;
+    color: #5f4b45;
+    padding: 20px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    z-index: 999999;
+  `;
+
+  messageBox.innerHTML = `
+    <h2>🧶 Checking your order...</h2>
+    <p>Making sure your crochet friend is ready for its journey.</p>
+  `;
+
+  document.body.appendChild(messageBox);
+
+
+  setTimeout(() => {
+
+    messageBox.innerHTML = `
+      <h2>Thank you for your order 💚</h2>
+
+      <p>
+      Your Crochet Covern creation has been adopted!
+      </p>
+
+      <p>
+      Your order details have been received and your handmade friend
+      will be carefully packed ready for its journey home 📦✨
+      </p>
+
+      <button class="btn" onclick="this.parentElement.remove()">
+      Continue Shopping
+      </button>
+    `;
+
+    window.history.replaceState(
+      {},
+      document.title,
+      window.location.pathname
+    );
+
+  }, 2000);
+});
