@@ -52,7 +52,7 @@ function addToCart(name, price, image, suitable, stock) {
   });
 
   saveCart();
-  alert(name + " has been added to your cart 🛒");
+ 
 }
 
 function removeFromCart(index) {
