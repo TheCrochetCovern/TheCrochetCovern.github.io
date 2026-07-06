@@ -34,7 +34,9 @@ export default async function handler(req, res) {
         hosted_checkout: {
           enabled: true
         },
-       redirect_url: `https://thecrochetcovern.github.io/?checkout=${checkoutRef}`
+        
+       redirect_url: `https://thecrochetcovern.github.io/thankyou.html?checkout=${checkoutRef}`
+        
       })
     });
 
