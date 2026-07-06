@@ -217,7 +217,13 @@ document.addEventListener("DOMContentLoaded", () => {
           clearCart();
         }
 
-        window.location.href = checkoutData.url;
+       localStorage.setItem("lastCheckoutId", checkoutData.checkoutId);
+localStorage.setItem("lastCustomerEmail", formData.get("Email"));
+localStorage.setItem("lastCustomerName", formData.get("Full Name"));
+localStorage.setItem("lastOrderDescription", selectedProduct.name);
+localStorage.setItem("lastOrderTotal", selectedProduct.price);
+
+window.location.href = checkoutData.url;
 
       } catch (error) {
         alert("Something went wrong. Check the console.");
