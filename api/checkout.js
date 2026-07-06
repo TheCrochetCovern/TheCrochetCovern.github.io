@@ -3,9 +3,7 @@ export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
+  if (req.method === "OPTIONS") return res.status(200).end();
 
   if (req.method === "GET") {
     return res.status(200).json({ message: "Checkout API is working" });
@@ -16,7 +14,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { amount, description } = req.body;
+    const { amount, description, items } = req.body;
 
     const response = await fetch("https://api.sumup.com/v0.1/checkouts", {
       method: "POST",
@@ -41,6 +39,44 @@ export default async function handler(req, res) {
 
     if (!response.ok) {
       return res.status(response.status).json(data);
+    }
+
+    if (items && Array.isArray(items)) {
+      for (const item of items) {
+        const productResponse = await fetch(
+          `${process.env.SUPABASE_URL}/rest/v1/products?name=eq.${encodeURIComponent(item.name)}&select=stock`,
+          {
+            headers: {
+              apikey: process.env.SUPABASE_KEY,
+              Authorization: `Bearer ${process.env.SUPABASE_KEY}`
+            }
+          }
+        );
+
+        const products = await productResponse.json();
+
+        if (products.length > 0) {
+          const currentStock = products[0].stock;
+          const newStock = Math.max(currentStock - 1, 0);
+
+          await fetch(
+            `${process.env.SUPABASE_URL}/rest/v1/products?name=eq.${encodeURIComponent(item.name)}`,
+            {
+              method: "PATCH",
+              headers: {
+                apikey: process.env.SUPABASE_KEY,
+                Authorization: `Bearer ${process.env.SUPABASE_KEY}`,
+                "Content-Type": "application/json",
+                Prefer: "return=minimal"
+              },
+              body: JSON.stringify({
+                stock: newStock,
+                available: newStock > 0
+              })
+            }
+          );
+        }
+      }
     }
 
     return res.status(200).json({
