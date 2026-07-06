@@ -189,8 +189,9 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
 
-       if (!formspreeResponse.ok) {
-  console.log("Formspree failed, continuing anyway");
+      if (!formspreeResponse.ok) {
+  alert("Your order details could not be sent. Please try again or contact me directly.");
+  return;
 }
 
 
