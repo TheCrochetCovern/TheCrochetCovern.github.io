@@ -285,13 +285,13 @@ function chooseMiniCowColour() {
   let cowName = "";
 
   if (choice === "1" || choice.includes("black")) {
-    cowName = "Mini Cow - Black & White";
+    cowName = "Black & White Mini Cow";
   } else if (choice === "2" || choice.includes("pink") || choice.includes("red")) {
-    cowName = "Mini Cow - Pink & Red";
+    cowName = "Pink Mini Cow";
   } else if (choice === "3" || choice.includes("brown")) {
-    cowName = "Mini Cow - Brown";
+    cowName = "Brown Mini Cow";
   } else {
-    alert("Please choose Black & White, Pink & Red, or Brown.");
+    alert("Please choose Black & White, Pink, or Brown.");
     return;
   }
 
