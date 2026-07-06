@@ -66,8 +66,8 @@ export default async function handler(req, res) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        from: "The Crochet Covern <orders@thecrochetcovern.co.uk>",
-        to: ["thecrochetcovern@gmail.com"],
+      from: "The Crochet Covern Orders <orders@thecrochetcovern.co.uk>",
+      to: ["melodiemay@thecrochetcovern.co.uk"],
         reply_to: customer.email,
         subject: `🧶 New Crochet Order - ${checkoutRef}`,
         html: `
