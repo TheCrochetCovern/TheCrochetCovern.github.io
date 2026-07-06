@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  res.setHeader("Access-Control-Allow-Origin", "https://thecrochetcovern.github.io");
+  res.setHeader("Access-Control-Allow-Origin", "https://thecrochetcovern.co.uk");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
@@ -35,7 +35,7 @@ export default async function handler(req, res) {
           enabled: true
         },
         
-       redirect_url: `https://thecrochetcovern.github.io/thankyou.html?checkout=${checkoutRef}`
+       redirect_url: `https://thecrochetcovern.co.uk/thankyou.html?checkout=${checkoutRef}`
         
       })
     });
