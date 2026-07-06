@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You | The Crochet Covern</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#e8dcd6">
+<script src="script.js" defer></script>
+</head>
+
+<body>
+
+<header>
+  <h1>The Crochet Covern</h1>
+  <p>Thank you for your order</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="newborn.html">Newborn Safe</a>
+  <a href="toys.html">3+</a>
+  <a href="keyrings.html">Keyrings</a>
+  <a href="seasonal.html">Seasonal</a>
+  <a href="contact.html">Contact</a>
+
+  <button class="btn cart-btn" onclick="openCart()">
+    🛒 Cart (<span id="cartCount">0</span>)
+  </button>
+</nav>
+
+<section class="hero">
+  <h2>Thank you for adopting a handmade friend 🧶✨</h2>
+
+  <p>
+    Your order has been received, and your Crochet Covern creation
+    is now getting ready for its journey home.
+  </p>
+
+  <p style="margin-top:15px;font-size:14px;color:#7a6a6a;">
+    A confirmation email has been sent to The Crochet Covern with your order
+    details, delivery address, and notes.
+  </p>
+</section>
+
+<section class="products">
+
+  <div class="card">
+    <h3>📦 What happens next?</h3>
+
+    <p>
+      I’ll carefully check your order details, package your handmade item,
+      and prepare it for posting.
+    </p>
+
+    <p>
+      Orders are usually posted within
+      <strong>1–3 working days</strong> after payment.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>💌 Need to change something?</h3>
+
+    <p>
+      If you notice a mistake with your address, order notes,
+      or contact details, please message me as soon as possible.
+    </p>
+
+    <a class="btn" href="mailto:thecrochetcovern@gmail.com?subject=Order Update Request">
+      Contact The Crochet Covern
+    </a>
+  </div>
+
+  <div class="card">
+    <h3>🧶 Keep browsing</h3>
+
+    <p>
+      Want to look at more cosy crochet creations, seasonal pieces,
+      plushies, or keyrings?
+    </p>
+
+    <a class="btn" href="index.html">
+      Return to Shop
+    </a>
+  </div>
+
+</section>
+
+<section class="hero">
+  <h2>Handmade with care</h2>
+
+  <p>
+    Thank you for supporting my small handmade business.
+    Every order means so much and helps The Crochet Covern grow stitch by stitch.
+  </p>
+</section>
+
+<footer>
+  © 2026 The Crochet Covern • Handmade with care
+</footer>
+
+<div id="cartModal" class="order-modal">
+  <div class="order-box">
+
+    <button class="close-modal" onclick="closeCart()">×</button>
+
+    <span class="handmade">Your Basket</span>
+
+    <h2>Shopping Cart</h2>
+
+    <div id="cartItems"></div>
+
+    <p class="price">
+      Total: <span id="cartTotal">£0.00</span>
+    </p>
+
+    <div class="order-actions">
+      <button class="btn pay-btn" onclick="checkoutCart()">
+        🛒 Checkout
+      </button>
+
+      <button class="btn cancel-btn" onclick="closeCart()">
+        Continue Shopping
+      </button>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
