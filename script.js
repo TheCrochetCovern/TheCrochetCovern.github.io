@@ -163,63 +163,74 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", async event => {
       event.preventDefault();
 
+      alert("Checkout started");
+
       if (!selectedProduct) {
         alert("Please choose a product first.");
         return;
       }
 
-      const formData = new FormData(form);
+      try {
+        const formData = new FormData(form);
 
-      formData.append("Order Total", "£" + selectedProduct.price);
+        formData.append("Order Total", "£" + selectedProduct.price);
 
-      if (cart.length > 0 && selectedProduct.name.startsWith("Cart Order")) {
-        formData.append(
-          "Cart Items",
-          cart.map(item => `${item.name} - £${item.price}`).join("\n")
-        );
-      }
-
-      const formspreeResponse = await fetch(FORMSPREE_URL, {
-        method: "POST",
-        body: formData,
-        headers: {
-          Accept: "application/json"
+        if (cart.length > 0 && selectedProduct.name.startsWith("Cart Order")) {
+          formData.append(
+            "Cart Items",
+            cart.map(item => `${item.name} - £${item.price}`).join("\n")
+          );
         }
-      });
 
-      if (!formspreeResponse.ok) {
-        alert("Your order details could not be sent. Please try again.");
-        return;
+        const formspreeResponse = await fetch(FORMSPREE_URL, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json"
+          }
+        });
+
+        if (!formspreeResponse.ok) {
+          alert("Order form failed to send.");
+          return;
+        }
+
+        alert("Order form sent. Creating payment...");
+
+        const checkoutResponse = await fetch(CHECKOUT_API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            amount: priceToNumber(selectedProduct.price),
+            description: selectedProduct.name,
+            items: cart.length > 0 && selectedProduct.name.startsWith("Cart Order")
+              ? cart
+              : [{ name: selectedProduct.name }]
+          })
+        });
+
+        const checkoutData = await checkoutResponse.json();
+
+        if (!checkoutResponse.ok || !checkoutData.url) {
+          alert("Payment checkout could not be created.");
+          console.log(checkoutData);
+          return;
+        }
+
+        alert("Opening SumUp payment...");
+
+        if (selectedProduct.name.startsWith("Cart Order")) {
+          clearCart();
+        }
+
+        window.location.href = checkoutData.url;
+
+      } catch (error) {
+        alert("Something went wrong. Check the console.");
+        console.error(error);
       }
-
-      const checkoutResponse = await fetch(CHECKOUT_API_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        
-       body: JSON.stringify({
-  amount: priceToNumber(selectedProduct.price),
-  description: selectedProduct.name,
-  items: cart.length > 0 && selectedProduct.name.startsWith("Cart Order")
-    ? cart
-    : [{ name: selectedProduct.name }]
-})
-        
-      });
-
-      const checkoutData = await checkoutResponse.json();
-
-      if (!checkoutResponse.ok || !checkoutData.url) {
-        alert("Payment checkout could not be created. Please contact me to order.");
-        return;
-      }
-
-      if (selectedProduct.name.startsWith("Cart Order")) {
-        clearCart();
-      }
-
-      window.location.href = checkoutData.url;
     });
   }
 });
