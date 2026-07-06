@@ -128,6 +128,42 @@
 
   </div>
 </div>
+  
+<script>
+window.addEventListener("load", async () => {
+  const checkoutId = localStorage.getItem("lastCheckoutId");
+  const customerEmail = localStorage.getItem("lastCustomerEmail");
+  const customerName = localStorage.getItem("lastCustomerName");
+  const orderDescription = localStorage.getItem("lastOrderDescription");
+  const orderTotal = localStorage.getItem("lastOrderTotal");
 
+  if (!checkoutId || !customerEmail) return;
+
+  const response = await fetch("https://the-crochet-covern-github-io.vercel.app/api/check-payment", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      checkoutId,
+      customerEmail,
+      customerName,
+      orderDescription,
+      orderTotal
+    })
+  });
+
+  const data = await response.json();
+
+  if (data.paid) {
+    localStorage.removeItem("lastCheckoutId");
+    localStorage.removeItem("lastCustomerEmail");
+    localStorage.removeItem("lastCustomerName");
+    localStorage.removeItem("lastOrderDescription");
+    localStorage.removeItem("lastOrderTotal");
+  }
+});
+</script>
+  
 </body>
 </html>
