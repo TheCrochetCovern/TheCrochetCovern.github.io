@@ -1,7 +1,6 @@
 /* THE CROCHET COVERN CART + CHECKOUT */
 
 const CHECKOUT_API_URL = "https://the-crochet-covern-github-io.vercel.app/api/checkout";
-const FORMSPREE_URL = "https://formspree.io/f/xlgywnqv";
 
 let selectedProduct = null;
 let cart = JSON.parse(localStorage.getItem("crochetCart")) || [];
@@ -181,32 +180,28 @@ document.addEventListener("DOMContentLoaded", () => {
           );
         }
 
-        const formspreeResponse = await fetch(FORMSPREE_URL, {
-          method: "POST",
-          body: formData,
-          headers: {
-            Accept: "application/json"
-          }
-        });
-
-      if (!formspreeResponse.ok) {
-  alert("Your order details could not be sent. Please try again or contact me directly.");
-  return;
-}
-
 
         const checkoutResponse = await fetch(CHECKOUT_API_URL, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({
-            amount: priceToNumber(selectedProduct.price),
-            description: selectedProduct.name,
-            items: cart.length > 0 && selectedProduct.name.startsWith("Cart Order")
-              ? cart
-              : [{ name: selectedProduct.name }]
-          })
+          
+         body: JSON.stringify({
+  amount: priceToNumber(selectedProduct.price),
+  description: selectedProduct.name,
+  items: cart.length > 0 && selectedProduct.name.startsWith("Cart Order")
+    ? cart
+    : [{ name: selectedProduct.name, price: selectedProduct.price }],
+  customer: {
+    fullName: formData.get("Full Name"),
+    email: formData.get("Email"),
+    address: formData.get("Address"),
+    town: formData.get("Town or City"),
+    postcode: formData.get("Postcode"),
+    notes: formData.get("Order Notes")
+  }
+})
         });
 
         const checkoutData = await checkoutResponse.json();
