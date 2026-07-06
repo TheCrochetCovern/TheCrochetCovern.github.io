@@ -147,7 +147,7 @@ function closeOrderModal() {
 
 function contactOrder() {
   window.location.href =
-    "mailto:thecrochetcovern@gmail.com?subject=" +
+    "mailto:support@thecrochetcovern.co.uk?subject=" +
     encodeURIComponent("Order Enquiry - " + (selectedProduct?.name || ""));
 }
 
