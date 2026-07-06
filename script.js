@@ -190,12 +190,11 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
 
-        if (!formspreeResponse.ok) {
-          alert("Order form failed to send.");
-          return;
-        }
+       if (!formspreeResponse.ok) {
+  console.log("Formspree failed, continuing anyway");
+}
 
-        alert("Order form sent. Creating payment...");
+alert("Creating payment...");
 
         const checkoutResponse = await fetch(CHECKOUT_API_URL, {
           method: "POST",
