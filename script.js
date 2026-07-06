@@ -163,7 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", async event => {
       event.preventDefault();
 
-      alert("Checkout started");
 
       if (!selectedProduct) {
         alert("Please choose a product first.");
@@ -194,7 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Formspree failed, continuing anyway");
 }
 
-alert("Creating payment...");
 
         const checkoutResponse = await fetch(CHECKOUT_API_URL, {
           method: "POST",
@@ -218,7 +216,6 @@ alert("Creating payment...");
           return;
         }
 
-        alert("Opening SumUp payment...");
 
         if (selectedProduct.name.startsWith("Cart Order")) {
           clearCart();
