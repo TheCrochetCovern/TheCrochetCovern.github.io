@@ -257,3 +257,34 @@ if ("serviceWorker" in navigator) {
     });
   });
 }
+
+
+function chooseMiniCowColour() {
+  const colour = prompt(
+    "Which mini cow would you like?\n\n1. Black & White\n2. Pink & Red\n3. Brown"
+  );
+
+  if (!colour) return;
+
+  let choice = colour.toLowerCase();
+  let cowName = "";
+
+  if (choice === "1" || choice.includes("black")) {
+    cowName = "Mini Cow - Black & White";
+  } else if (choice === "2" || choice.includes("pink") || choice.includes("red")) {
+    cowName = "Mini Cow - Pink & Red";
+  } else if (choice === "3" || choice.includes("brown")) {
+    cowName = "Mini Cow - Brown";
+  } else {
+    alert("Please choose Black & White, Pink & Red, or Brown.");
+    return;
+  }
+
+  addToCart(
+    cowName,
+    "7.00",
+    "cow-collection-1.jpg",
+    "3+",
+    "1 Available"
+  );
+}
