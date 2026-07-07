@@ -53,24 +53,37 @@ export default async function handler(req, res) {
       return res.status(sumupResponse.status).json(sumupData);
     }
 
-    await fetch(`${process.env.SUPABASE_URL}/rest/v1/orders`, {
-      method: "POST",
-      headers: {
-        apikey: process.env.SUPABASE_SERVICE_KEY,
-        Authorization: `Bearer ${process.env.SUPABASE_SERVICE_KEY}`,
-        "Content-Type": "application/json",
-        Prefer: "return=minimal"
-      },
-      body: JSON.stringify({
-        checkout_id: sumupData.id,
-        checkout_ref: checkoutRef,
-        customer,
-        items,
-        amount: Number(amount),
-        paid: false,
-        email_sent: false
-      })
-    });
+const supabaseResponse = await fetch(`${process.env.SUPABASE_URL}/rest/v1/orders`, {
+  method: "POST",
+  headers: {
+    apikey: process.env.SUPABASE_SERVICE_KEY,
+    Authorization: `Bearer ${process.env.SUPABASE_SERVICE_KEY}`,
+    "Content-Type": "application/json",
+    Prefer: "return=representation"
+  },
+  body: JSON.stringify({
+    checkout_id: sumupData.id,
+    checkout_ref: checkoutRef,
+    customer,
+    items,
+    amount: Number(amount),
+    paid: false,
+    email_sent: false
+  })
+});
+
+const supabaseResult = await supabaseResponse.json();
+
+if (!supabaseResponse.ok) {
+  console.log("SUPABASE ERROR:", supabaseResult);
+
+  return res.status(500).json({
+    error: "Order could not be saved",
+    details: supabaseResult
+  });
+}
+
+console.log("ORDER SAVED:", supabaseResult);  });
 
     return res.status(200).json({
       url: sumupData.hosted_checkout_url,
