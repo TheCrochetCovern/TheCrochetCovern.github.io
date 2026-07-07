@@ -42,6 +42,8 @@ function orderProduct(name, price, image, suitable, stock, sumupLink) {
 /* CART FUNCTIONS */
 
 function addToCart(name, price, image, suitable, stock) {
+  flyToCart(image);
+
   cart.push({
     name,
     price,
@@ -50,8 +52,43 @@ function addToCart(name, price, image, suitable, stock) {
     stock
   });
 
-  saveCart();
- 
+  setTimeout(() => {
+    saveCart();
+  }, 600);
+}
+function flyToCart(image) {
+  const cartButton = document.querySelector(".cart-btn");
+
+  if (!cartButton) {
+    saveCart();
+    return;
+  }
+
+  const flyingImg = document.createElement("img");
+
+  flyingImg.src = image;
+  flyingImg.className = "fly-cart-img";
+
+  const startX = window.innerWidth / 2;
+  const startY = window.innerHeight / 2;
+
+  const cartRect = cartButton.getBoundingClientRect();
+
+  flyingImg.style.left = startX + "px";
+  flyingImg.style.top = startY + "px";
+
+  document.body.appendChild(flyingImg);
+
+  setTimeout(() => {
+    flyingImg.style.left = cartRect.left + cartRect.width / 2 + "px";
+    flyingImg.style.top = cartRect.top + cartRect.height / 2 + "px";
+    flyingImg.style.transform = "scale(0.1) rotate(20deg)";
+    flyingImg.style.opacity = "0";
+  }, 50);
+
+  setTimeout(() => {
+    flyingImg.remove();
+  }, 750);
 }
 
 function removeFromCart(index) {
