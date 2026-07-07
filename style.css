@@ -1584,3 +1584,58 @@ nav a,
   font-weight:bold;
   color:#3b2f2f;
 }
+
+
+.stats-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.stat-card {
+  background:#fffdfc;
+  border:2px solid #ead8d2;
+  border-radius:22px;
+  padding:20px;
+  text-align:center;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.stat-card h2 {
+  margin:0;
+  font-size:32px;
+  color:#5f4b45;
+}
+
+
+.item-box {
+  background:#faf7f5;
+  padding:18px;
+  border-radius:18px;
+}
+
+.order-item {
+  margin-bottom:14px;
+  font-size:16px;
+}
+
+.order-price {
+  color:#7a6a6a;
+  margin-left:25px;
+}
+
+.total-box {
+  background:#edf6ea;
+  padding:15px;
+  border-radius:18px;
+  font-size:20px;
+  margin-top:15px;
+}
+
+
+@media(max-width:700px){
+.stats-grid{
+grid-template-columns:1fr;
+}
+}
