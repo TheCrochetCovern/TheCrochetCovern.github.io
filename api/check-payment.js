@@ -173,7 +173,21 @@ export default async function handler(req, res) {
           `
         })
       });
-
+      
+      for (const item of items) {
+        await fetch(
+          "https://the-crochet-covern-github-io.vercel.app/api/update-stock",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              itemName: item.name
+            })
+          }
+        );
+      }
       await fetch(
         `${process.env.SUPABASE_URL}/rest/v1/orders?checkout_id=eq.${realCheckoutId}`,
         {
