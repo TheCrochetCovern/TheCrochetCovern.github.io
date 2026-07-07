@@ -400,3 +400,86 @@ window.addEventListener("load", async () => {
 
   }, 2000);
 });
+
+/* LIVE STOCK CHECK */
+
+async function updateLiveStock() {
+  try {
+
+    const response = await fetch(
+      "https://the-crochet-covern-github-io.vercel.app/api/get-products"
+    );
+
+    const data = await response.json();
+
+    if (!data.products) return;
+
+
+    data.products.forEach(product => {
+
+      document.querySelectorAll(".card").forEach(card => {
+
+        const title = card.querySelector("h3");
+
+        if (!title) return;
+
+
+        if (title.textContent.trim() === product.name) {
+
+
+          const stockText = card.querySelector(".stock");
+
+          if (stockText) {
+
+            if (product.stock <= 0) {
+
+              stockText.textContent = "❌ Sold Out";
+
+            } else {
+
+              stockText.textContent =
+                product.stock + " Available";
+
+            }
+
+          }
+
+
+          const buttons = card.querySelectorAll("button");
+
+
+          buttons.forEach(button => {
+
+            if (product.stock <= 0) {
+
+              button.disabled = true;
+
+              button.textContent = "Sold Out";
+
+              button.classList.add("sold-out-btn");
+
+
+            } else {
+
+              button.disabled = false;
+
+            }
+
+          });
+
+        }
+
+      });
+
+    });
+
+
+  } catch(error) {
+
+    console.log("Stock check failed", error);
+
+  }
+}
+
+
+window.addEventListener("load", updateLiveStock);
