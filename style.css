@@ -1560,3 +1560,27 @@ nav a,
 
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
+
+
+.info-box {
+  background:#faf7f5;
+  padding:18px;
+  border-radius:18px;
+}
+
+.info-row {
+  margin-bottom:14px;
+}
+
+.info-row label {
+  display:block;
+  font-size:13px;
+  color:#7a6a6a;
+  margin-bottom:4px;
+}
+
+.info-row span {
+  font-size:16px;
+  font-weight:bold;
+  color:#3b2f2f;
+}
