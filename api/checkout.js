@@ -83,7 +83,7 @@ if (!supabaseResponse.ok) {
   });
 }
 
-console.log("ORDER SAVED:", supabaseResult);  });
+console.log("ORDER SAVED:", supabaseResult);
 
     return res.status(200).json({
       url: sumupData.hosted_checkout_url,
