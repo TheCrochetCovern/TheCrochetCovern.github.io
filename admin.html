@@ -115,7 +115,28 @@ pre {
 </section>
 
 <div class="admin-wrap">
+
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <h2 id="packCount">0</h2>
+      <p>📦 Orders to Pack</p>
+    </div>
+
+    <div class="stat-card">
+      <h2 id="postedCount">0</h2>
+      <p>🚚 Posted Orders</p>
+    </div>
+
+    <div class="stat-card">
+      <h2 id="salesTotal">£0</h2>
+      <p>💷 Total Sales</p>
+    </div>
+
+  </div>
+
   <section id="orders"></section>
+
 </div>
 
 <script>
@@ -167,7 +188,24 @@ async function loadOrders() {
 
   const container = document.getElementById("orders");
   container.innerHTML = "";
+  
+const toPack = data.orders.filter(o => o.order_status !== "Posted").length;
 
+const posted = data.orders.filter(o => o.order_status === "Posted").length;
+
+const sales = data.orders
+.filter(o => o.paid)
+.reduce((sum,o)=>sum + Number(o.amount),0);
+
+
+document.getElementById("packCount").textContent = toPack;
+
+document.getElementById("postedCount").textContent = posted;
+
+document.getElementById("salesTotal").textContent = 
+"£" + sales.toFixed(2);
+
+  
   const sortedOrders = data.orders.sort((a, b) => {
     const statusSort = statusPriority(a.order_status) - statusPriority(b.order_status);
 
@@ -211,14 +249,26 @@ async function loadOrders() {
 
         <div class="admin-grid">
 
-          <div>
-            <h3>🧸 Items</h3>
-            <p>
-              ${items.map(i => `${i.name} - £${i.price || ""}`).join("<br>")}
-            </p>
+        <div class="item-box">
 
-            <p><strong>Total:</strong> £${order.amount}</p>
-          </div>
+<h3>🧸 Order Items</h3>
+
+${items.map(i => `
+<div class="order-item">
+☐ ${i.name}
+<div class="order-price">
+£${i.price || ""}
+</div>
+</div>
+`).join("")}
+
+
+<div class="total-box">
+💷 Order Total<br>
+<strong>£${order.amount}</strong>
+</div>
+
+</div>
 
           <div class="info-box">
 
