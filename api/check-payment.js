@@ -25,13 +25,41 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { checkoutId } = req.body;
+    const { checkoutId, checkoutRef } = req.body;
 
-    if (!checkoutId) {
-      return res.status(400).json({ error: "Missing checkoutId" });
+    if (!checkoutId && !checkoutRef) {
+      return res.status(400).json({ error: "Missing checkoutId or checkoutRef" });
     }
 
-    const sumupResponse = await fetch(`https://api.sumup.com/v0.1/checkouts/${checkoutId}`, {
+    let orderQuery = "";
+
+    if (checkoutId) {
+      orderQuery = `checkout_id=eq.${checkoutId}`;
+    } else {
+      orderQuery = `checkout_ref=eq.${checkoutRef}`;
+    }
+
+    const orderResponse = await fetch(
+      `${process.env.SUPABASE_URL}/rest/v1/orders?${orderQuery}&select=*`,
+      {
+        method: "GET",
+        headers: {
+          apikey: process.env.SUPABASE_SERVICE_KEY,
+          Authorization: `Bearer ${process.env.SUPABASE_SERVICE_KEY}`
+        }
+      }
+    );
+
+    const orders = await orderResponse.json();
+    const order = orders[0];
+
+    if (!order) {
+      return res.status(404).json({ error: "Order not found" });
+    }
+
+    const realCheckoutId = order.checkout_id;
+
+    const sumupResponse = await fetch(`https://api.sumup.com/v0.1/checkouts/${realCheckoutId}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${process.env.SUMUP_API_KEY}`,
@@ -46,24 +74,6 @@ export default async function handler(req, res) {
     }
 
     const paid = sumupData.status === "PAID";
-
-    const orderResponse = await fetch(
-      `${process.env.SUPABASE_URL}/rest/v1/orders?checkout_id=eq.${checkoutId}&select=*`,
-      {
-        method: "GET",
-        headers: {
-          apikey: process.env.SUPABASE_SERVICE_KEY,
-          Authorization: `Bearer ${process.env.SUPABASE_SERVICE_KEY}`
-        }
-      }
-    );
-
-    const orders = await orderResponse.json();
-    const order = orders[0];
-
-    if (!order) {
-      return res.status(404).json({ error: "Order not found", paid });
-    }
 
     if (paid && !order.email_sent) {
       const customer = order.customer;
@@ -125,7 +135,6 @@ export default async function handler(req, res) {
           html: `
             <div style="font-family: Georgia, serif; background:#faf7f5; padding:30px; color:#3b2f2f;">
               <div style="max-width:620px; margin:auto; background:#fffdfc; border-radius:24px; padding:30px; border:2px dashed #ead8d2;">
-                
                 <h1 style="text-align:center; color:#5f4b45;">
                   Thank you${customer.fullName ? `, ${customer.fullName}` : ""} 🧶✨
                 </h1>
@@ -159,7 +168,6 @@ export default async function handler(req, res) {
                 <p style="font-size:13px; color:#7a6a6a; text-align:center; margin-top:30px;">
                   Need help? Email support@thecrochetcovern.co.uk
                 </p>
-
               </div>
             </div>
           `
@@ -167,7 +175,7 @@ export default async function handler(req, res) {
       });
 
       await fetch(
-        `${process.env.SUPABASE_URL}/rest/v1/orders?checkout_id=eq.${checkoutId}`,
+        `${process.env.SUPABASE_URL}/rest/v1/orders?checkout_id=eq.${realCheckoutId}`,
         {
           method: "PATCH",
           headers: {
@@ -187,7 +195,8 @@ export default async function handler(req, res) {
     return res.status(200).json({
       paid,
       status: sumupData.status,
-      checkoutId: sumupData.id
+      checkoutId: realCheckoutId,
+      checkoutRef: order.checkout_ref
     });
 
   } catch (error) {
