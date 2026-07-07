@@ -220,17 +220,32 @@ async function loadOrders() {
             <p><strong>Total:</strong> £${order.amount}</p>
           </div>
 
-          <div>
-            <h3>📦 Customer</h3>
-            <p>
-              <strong>Name:</strong> ${customer.fullName || ""}<br>
-              <strong>Email:</strong> ${customer.email || ""}<br>
-              <strong>Address:</strong><br>
-              ${customer.address || ""}<br>
-              ${customer.town || ""}<br>
-              ${customer.postcode || ""}
-            </p>
-          </div>
+          <div class="info-box">
+
+<h3>👤 Customer Details</h3>
+
+<div class="info-row">
+<label>Name</label>
+<span>${customer.fullName || ""}</span>
+</div>
+
+<div class="info-row">
+<label>Email</label>
+<span>${customer.email || ""}</span>
+</div>
+
+<h3>🏠 Delivery Address</h3>
+
+<div class="info-row">
+<label>Address</label>
+<span>
+${customer.address || ""}<br>
+${customer.town || ""}<br>
+${customer.postcode || ""}
+</span>
+</div>
+
+</div>
 
         </div>
 
