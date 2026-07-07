@@ -1,0 +1,51 @@
+export default async function handler(req, res) {
+  const allowedOrigins = [
+    "https://thecrochetcovern.co.uk",
+    "http://thecrochetcovern.co.uk",
+    "https://thecrochetcovern.github.io"
+  ];
+
+  const origin = req.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+
+  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") return res.status(200).end();
+
+  if (req.method !== "GET") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  try {
+
+    const response = await fetch(
+      `${process.env.SUPABASE_URL}/rest/v1/products?select=*`,
+      {
+        method: "GET",
+        headers: {
+          apikey: process.env.SUPABASE_SERVICE_KEY,
+          Authorization: `Bearer ${process.env.SUPABASE_SERVICE_KEY}`
+        }
+      }
+    );
+
+    const products = await response.json();
+
+    if (!response.ok) {
+      return res.status(response.status).json(products);
+    }
+
+    return res.status(200).json({
+      products
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      error: "Could not load products"
+    });
+  }
+}
