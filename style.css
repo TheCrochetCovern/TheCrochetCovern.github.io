@@ -1651,3 +1651,8 @@ grid-template-columns:1fr;
   transition: all 0.7s ease-in-out;
   box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
+.sold-out-btn {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background:#b8aaa5 !important;
+}
