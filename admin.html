@@ -1,141 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Admin | The Crochet Covern</title>
+
 <link rel="stylesheet" href="style.css">
 
 <style>
-.admin-wrap {
-  max-width: 1000px;
-  margin: 30px auto;
-  padding: 15px;
+
+.admin-wrap{
+max-width:1200px;
+margin:auto;
+padding:25px;
 }
 
-.admin-controls {
-  text-align: center;
-  margin-bottom: 25px;
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-bottom:35px;
 }
 
-.admin-order {
-  background: #fffdfc;
-  border-radius: 22px;
-  padding: 22px;
-  margin: 18px auto;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.10);
-  border: 2px solid #ead8d2;
+.stat-card{
+background:#fffdfc;
+border-radius:22px;
+padding:25px;
+text-align:center;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+border:2px solid #ead8d2;
+transition:.25s;
 }
 
-.admin-order.urgent {
-  border-color: #b88b7a;
+.stat-card:hover{
+transform:translateY(-3px);
 }
 
-.admin-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  flex-wrap: wrap;
-  align-items: center;
+.stat-card h2{
+margin:0;
+font-size:34px;
+color:#5f4b45;
 }
 
-.badge {
-  display: inline-block;
-  padding: 7px 12px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: bold;
-  background: #e8dcd6;
-  color: #5f4b45;
+.stat-card p{
+margin-top:8px;
+color:#7a6a6a;
 }
 
-.badge.paid {
-  background: #dff2df;
+.status-section{
+background:#fffdfc;
+border-radius:22px;
+margin-bottom:18px;
+overflow:hidden;
+box-shadow:0 6px 18px rgba(0,0,0,.08);
+border:2px solid #ead8d2;
 }
 
-.badge.waiting {
-  background: #f5dfdf;
+.status-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 25px;
+cursor:pointer;
+font-size:19px;
+font-weight:bold;
+transition:.2s;
+user-select:none;
 }
 
-.status-buttons button {
-  margin: 4px;
+.status-header:hover{
+background:#f8f3f0;
 }
 
-.admin-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
+.status-count{
+font-size:14px;
+font-weight:normal;
+opacity:.7;
 }
 
-@media (max-width: 700px) {
-  .admin-grid {
-    grid-template-columns: 1fr;
-  }
+.status-content{
+display:none;
+padding:20px;
+background:#faf7f5;
 }
 
-.tracking-input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 12px;
-  border: 1px solid #d8c5bd;
-  margin-top: 8px;
+.status-section.open .status-content{
+display:block;
+animation:fadeIn .25s ease;
 }
 
-pre {
-  white-space: pre-wrap;
-  background: #faf7f5;
-  padding: 10px;
-  border-radius: 10px;
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(-8px);
 }
+
+to{
+opacity:1;
+transform:none;
+}
+
+}
+
+.order-summary{
+
+background:white;
+
+border-radius:18px;
+
+padding:18px 22px;
+
+margin-bottom:15px;
+
+cursor:pointer;
+
+border:2px solid #ead8d2;
+
+transition:.2s;
+
+}
+
+.order-summary:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 5px 14px rgba(0,0,0,.08);
+
+}
+
+.order-summary-top{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+}
+
+.order-summary h3{
+
+margin:0;
+
+font-size:20px;
+
+color:#5f4b45;
+
+}
+
+.order-summary small{
+
+color:#7a6a6a;
+
+}
+
+.order-details{
+
+display:none;
+
+margin-top:18px;
+
+padding-top:18px;
+
+border-top:2px dashed #ead8d2;
+
+}
+
+.order-summary.open .order-details{
+
+display:block;
+
+animation:fadeIn .25s ease;
+
+}
+
+.badges{
+
+display:flex;
+
+gap:8px;
+
+flex-wrap:wrap;
+
+margin-top:10px;
+
+}
+
+.badge{
+
+padding:7px 12px;
+
+border-radius:18px;
+
+font-size:13px;
+
+font-weight:bold;
+
+background:#e8dcd6;
+
+color:#5f4b45;
+
+}
+
+.badge.green{
+
+background:#dff2df;
+
+}
+
+.badge.red{
+
+background:#f6dddd;
+
+}
+
+.badge.orange{
+
+background:#f8ead7;
+
+}
+
+.badge.blue{
+
+background:#ddeeff;
+
+}
+
+.admin-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:25px;
+
+margin-top:20px;
+
+}
+
+@media(max-width:850px){
+
+.admin-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+.item-box,
+
+.info-box{
+
+background:#fff;
+
+padding:20px;
+
+border-radius:18px;
+
+border:2px solid #ead8d2;
+
+}
+
+.order-item{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:10px 0;
+
+border-bottom:1px dashed #ead8d2;
+
+}
+
+.order-item:last-child{
+
+border-bottom:none;
+
+}
+
+.total-box{
+
+margin-top:18px;
+
+padding:15px;
+
+border-radius:14px;
+
+background:#f5efe9;
+
+font-size:18px;
+
+font-weight:bold;
+
+text-align:center;
+
+}
+
+.info-row{
+
+margin-bottom:16px;
+
+}
+
+.info-row label{
+
+display:block;
+
+font-size:12px;
+
+text-transform:uppercase;
+
+letter-spacing:1px;
+
+color:#8a7770;
+
+margin-bottom:5px;
+
+}
+
+.info-row span{
+
+font-size:16px;
+
+color:#4d403c;
+
+}
+
+.tracking-input{
+
+width:100%;
+
+padding:12px;
+
+border-radius:12px;
+
+border:1px solid #d8c5bd;
+
+margin-top:8px;
+
+}
+
+.status-buttons{
+
+margin-top:25px;
+
+}
+
+.status-buttons button{
+
+margin:5px;
+
+}
+
+pre{
+
+white-space:pre-wrap;
+
+background:#faf7f5;
+
+padding:15px;
+
+border-radius:14px;
+
+border:1px solid #ead8d2;
+
+}
+
 </style>
+
 </head>
 
 <body>
 
 <header>
-  <h1>🧶 The Crochet Covern</h1>
-  <p>Admin Dashboard</p>
+
+<h1>🧶 The Crochet Covern</h1>
+
+<p>Admin Dashboard</p>
+
 </header>
 
 <section class="hero">
-  <h2>Order Book 📦</h2>
 
-  <input 
-    id="password"
-    type="password"
-    placeholder="Admin password"
-  >
+<h2>Order Management 📦</h2>
 
-  <br><br>
+<input
 
-  <button class="btn" onclick="loadOrders()">
-    Open Orders
-  </button>
+id="password"
+
+type="password"
+
+placeholder="Admin password"
+
+>
+
+<br><br>
+
+<button class="btn" onclick="loadOrders()">
+
+Open Dashboard
+
+</button>
+
 </section>
 
 <div class="admin-wrap">
 
-  <div class="stats-grid">
+<div class="stats-grid">
 
-    <div class="stat-card">
-      <h2 id="packCount">0</h2>
-      <p>📦 Orders to Pack</p>
-    </div>
+<div class="stat-card">
 
-    <div class="stat-card">
-      <h2 id="postedCount">0</h2>
-      <p>🚚 Posted Orders</p>
-    </div>
+<h2 id="packCount">0</h2>
 
-    <div class="stat-card">
-      <h2 id="salesTotal">£0</h2>
-      <p>💷 Total Sales</p>
-    </div>
+<p>📦 Orders to Pack</p>
 
-  </div>
+</div>
 
-  <section id="orders"></section>
+<div class="stat-card">
+
+<h2 id="postedCount">0</h2>
+
+<p>🚚 Posted</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2 id="salesTotal">£0</h2>
+
+<p>💷 Total Sales</p>
+
+</div>
+
+</div>
+
+<div id="orders"></div>
 
 </div>
 
