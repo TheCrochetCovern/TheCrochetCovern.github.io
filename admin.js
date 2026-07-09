@@ -35,7 +35,7 @@ function getOrderGroup(order){
         return "💚 Delivered";
     }
 
-    return "Other";
+    return "📦 Paid / Needs Packing";
 
 }
 
@@ -193,20 +193,26 @@ return new Date(b.created_at)-new Date(a.created_at);
 
 
 
-const groupedOrders = {};
+const groupedOrders = {
+
+    "📦 Paid / Needs Packing": [],
+    "❌ Unpaid": [],
+    "🎀 Packed / Needs Posting": [],
+    "🚚 Posted": [],
+    "💚 Delivered": []
+
+};
+
 
 sortedOrders.forEach(order => {
 
     const group = getOrderGroup(order);
 
-    if(!groupedOrders[group]){
-        groupedOrders[group] = [];
+    if(groupedOrders[group]){
+        groupedOrders[group].push(order);
     }
 
-    groupedOrders[group].push(order);
-
 });
-
 
 
 Object.keys(groupedOrders).forEach(group => {
