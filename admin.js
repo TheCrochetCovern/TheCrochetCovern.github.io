@@ -3,15 +3,41 @@ let savedPassword = "";
 
 function statusPriority(status) {
 
-  if (status === "Needs packing") return 1;
-  if (status === "Packed") return 2;
-  if (status === "Posted") return 3;
+    if (status === "Needs packing") return 1;
+    if (status === "Packed") return 2;
+    if (status === "Posted") return 3;
 
-  return 4;
+    return 4;
 
 }
 
 
+
+function getOrderGroup(order){
+
+    if(!order.paid){
+        return "❌ Unpaid";
+    }
+
+    if(order.order_status === "Needs packing"){
+        return "📦 Paid / Needs Packing";
+    }
+
+    if(order.order_status === "Packed"){
+        return "🎀 Packed / Needs Posting";
+    }
+
+    if(order.order_status === "Posted"){
+        return "🚚 Posted";
+    }
+
+    if(order.order_status === "Delivered"){
+        return "💚 Delivered";
+    }
+
+    return "Other";
+
+}
 
 function formatDate(dateText) {
 
@@ -167,48 +193,108 @@ return new Date(b.created_at)-new Date(a.created_at);
 
 
 
+const groupedOrders = {};
 
-sortedOrders.forEach(order=>{
+sortedOrders.forEach(order => {
 
+    const group = getOrderGroup(order);
 
-const customer=order.customer||{};
+    if(!groupedOrders[group]){
+        groupedOrders[group] = [];
+    }
 
-const items=order.items||[];
+    groupedOrders[group].push(order);
 
-const status=order.order_status||"Needs packing";
-
-
-
-
-
-
-container.innerHTML+=`
-
-
-<div class="admin-order" id="order-${order.id}">
+});
 
 
 
-<div class="admin-top">
+Object.keys(groupedOrders).forEach(group => {
 
-<div>
 
-<h2>${order.checkout_ref}</h2>
+container.innerHTML += `
 
-<p>${formatDate(order.created_at)}</p>
+<div class="status-section">
+
+
+<div class="status-header" onclick="toggleSection(this)">
+
+<span>
+${group}
+</span>
+
+<span class="status-count">
+${groupedOrders[group].length} orders
+</span>
 
 </div>
 
 
+<div class="status-content">
+
+
+<div id="${group.replace(/\s/g,'')}">
+
+</div>
+
+
+</div>
+
+
+</div>
+
+`;
+
+
+
+const section = document.getElementById(
+group.replace(/\s/g,'')
+);
+
+
+
+groupedOrders[group].forEach(order=>{
+
+
+const customer = order.customer || {};
+
+const items = order.items || [];
+
+const status = order.order_status || "Needs packing";
+
+
+
+section.innerHTML += `
+
+
+<div class="order-summary">
+
+
+<div class="order-summary-top"
+onclick="toggleOrder(this)">
+
 
 <div>
 
+<h3>
+${order.checkout_ref}
+</h3>
+
+<small>
+${formatDate(order.created_at)}
+</small>
+
+</div>
+
+
+<div class="badges">
+
+
 <span class="badge">
 
-${order.paid ? "✅ Paid":"❌ Not Paid"}
+${order.paid ? "✅ Paid":"❌ Unpaid"}
 
 </span>
-
 
 
 <span class="badge">
@@ -218,22 +304,15 @@ ${status}
 </span>
 
 
-
-<span class="badge">
-
-${order.email_sent ? "📩 Email Sent":"⏳ Email Waiting"}
-
-</span>
-
-
 </div>
+
 
 </div>
 
 
 
-<hr>
 
+<div class="order-details">
 
 
 
@@ -252,13 +331,13 @@ ${items.map(i=>`
 
 <div class="order-item">
 
+<span>
 ☐ ${i.name}
+</span>
 
-<div>
-
+<span>
 £${i.price || ""}
-
-</div>
+</span>
 
 </div>
 
@@ -266,26 +345,20 @@ ${items.map(i=>`
 
 
 
-
-
 <div class="total-box">
 
-💷 Order Total
+💷 Total
 
 <br>
 
 <strong>
-
 £${order.amount}
-
 </strong>
 
 </div>
 
 
-
 </div>
-
 
 
 
@@ -294,7 +367,7 @@ ${items.map(i=>`
 <div class="info-box">
 
 
-<h3>👤 Customer Details</h3>
+<h3>👤 Customer</h3>
 
 
 <div class="info-row">
@@ -302,14 +375,10 @@ ${items.map(i=>`
 <label>Name</label>
 
 <span>
-
 ${customer.fullName || ""}
-
 </span>
 
 </div>
-
-
 
 
 <div class="info-row">
@@ -317,23 +386,17 @@ ${customer.fullName || ""}
 <label>Email</label>
 
 <span>
-
 ${customer.email || ""}
-
 </span>
 
 </div>
 
 
 
-
-<h3>🏠 Delivery Address</h3>
+<h3>🏠 Address</h3>
 
 
 <div class="info-row">
-
-<label>Address</label>
-
 
 <span>
 
@@ -349,7 +412,6 @@ ${customer.postcode || ""}
 
 </span>
 
-
 </div>
 
 
@@ -358,15 +420,16 @@ ${customer.postcode || ""}
 
 
 </div>
-
 
 
 
 
 <h3>📝 Notes</h3>
 
-<pre>${customer.notes || "None"}</pre>
 
+<pre>
+${customer.notes || "None"}
+</pre>
 
 
 
@@ -406,12 +469,12 @@ Save Tracking
 
 
 
-
 <div class="status-buttons">
 
 
-<h3>Update Status</h3>
-
+<h3>
+Update Status
+</h3>
 
 
 
@@ -444,15 +507,20 @@ onclick="updateStatus('${order.id}','Posted')">
 </button>
 
 
-
 </div>
 
+
+
+</div>
 
 
 </div>
 
 
 `;
+
+});
+
 
 });
 
@@ -560,5 +628,18 @@ tracking_number:tracking
 
 });
 
+
+}
+function toggleSection(element){
+
+    element.parentElement.classList.toggle("open");
+
+}
+
+
+
+function toggleOrder(element){
+
+    element.parentElement.classList.toggle("open");
 
 }
