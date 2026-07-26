@@ -93,46 +93,61 @@ Order
 
 </div>
 
-  <div class="card">
+ <div class="card">
 
 <div class="photo-slider">
-<img src="images/pink-cherry-1.jpg" alt="Pink Cherry Crochet Keyring">
-<img src="images/pink-cherry-2.jpg" alt="Pink Cherry Crochet Keyring">
+<img src="images/pink-cherry-1.jpg">
+<img src="images/pink-cherry-2.jpg">
 </div>
 
 <h3>Pink Cherry Keyring</h3>
 
 <p>
-A handmade crochet pink cherry keyring.
-A cute accessory for keys, handbags, backpacks or a thoughtful handmade
-gift for someone who loves cherrys or crochet.
+Choose your favourite stem colour.
 </p>
+
+<label><strong>Stem Colour</strong></label>
+
+<select
+id="pinkCherrySelect"
+class="variation-select"
+onchange="updateVariation(this)">
+
+<option
+value="Pink Cherry Keyring"
+data-image="images/pink-cherry-1.jpg">
+Dark Stem
+</option>
+
+<option
+value="Pink Cherry Keyring (Light Stem)"
+data-image="images/pink-cherry-lightstem-1.jpg">
+Light Stem
+</option>
+
+</select>
 
 <p><strong>Suitable from:</strong> 3+</p>
 
 <p><strong>Stock:</strong>
-<span class="stock-badge">1 Available</span>
+<span
+id="pinkCherryStock"
+class="stock-badge">
+Loading...
+</span>
 </p>
 
 <p class="price">£5.00</p>
 
-<button class="btn" onclick="orderProduct(
-'Pink Cherry Keyring',
-'5.00',
-'images/pink-cherry-1.jpg',
-'3+',
-'Available'
-)">
+<button
+id="pinkCherryOrder"
+class="btn">
 Order
 </button>
 
-<button class="btn" onclick="addToCart(
-'Pink Cherry Keyring',
-'5.00',
-'images/pink-cherry-1.jpg',
-'3+',
-'Available'
-)">
+<button
+id="pinkCherryCart"
+class="btn">
 🛒 Add to Cart
 </button>
 
@@ -146,46 +161,63 @@ Order
 
 </div>
   
-  <div class="card">
+<div class="card">
 
 <div class="photo-slider">
-<img src="images/light-pink-cherry-1.jpg" alt="Light Pink Cherry Crochet Keyring">
-<img src="images/light-pink-cherry-2.jpg" alt="Light Pink Cherry Crochet Keyring">
+<img src="images/light-pink-cherry-1.jpg">
+<img src="images/light-pink-cherry-2.jpg">
 </div>
 
 <h3>Light Pink Cherry Keyring</h3>
 
 <p>
-A handmade crochet cherry keyring in light pink.
-Amazing for adding a subtle pop of colour to your keys, handbag, backpack or as
-a cute little gift for someone special.
+Choose your favourite stem colour.
 </p>
+
+<label><strong>Stem Colour</strong></label>
+
+<select
+id="lightPinkCherrySelect"
+class="variation-select"
+onchange="updateVariation(this)">
+
+<option
+value="Light Pink Cherry Keyring"
+data-image="images/light-pink-cherry-1.jpg">
+Dark Stem
+</option>
+
+<option
+value="Light Pink Cherry Keyring (Light Stem)"
+data-image="images/lightpink-cherry-lightstem-1.jpg">
+Light Stem
+</option>
+
+</select>
 
 <p><strong>Suitable from:</strong> 3+</p>
 
 <p><strong>Stock:</strong>
-<span class="stock-badge">1 Available</span>
+
+<span
+id="lightPinkCherryStock"
+class="stock-badge">
+Loading...
+</span>
+
 </p>
 
 <p class="price">£5.00</p>
 
-<button class="btn" onclick="orderProduct(
-'Light Pink Cherry Keyring',
-'5.00',
-'images/light-pink-cherry-1.jpg',
-'3+',
-'Available'
-)">
+<button
+id="lightPinkCherryOrder"
+class="btn">
 Order
 </button>
 
-<button class="btn" onclick="addToCart(
-'Light Pink Cherry Keyring',
-'5.00',
-'images/light-pink-cherry-1.jpg',
-'3+',
-'Available'
-)">
+<button
+id="lightPinkCherryCart"
+class="btn">
 🛒 Add to Cart
 </button>
 
