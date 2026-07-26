@@ -424,7 +424,10 @@ async function updateLiveStock() {
         if (!title) return;
 
 
-        if (title.textContent.trim() === product.name) {
+if (
+  title.textContent.trim().toLowerCase() === 
+  product.name.trim().toLowerCase()
+) {
 
 
           const stockText = card.querySelector(".stock");
