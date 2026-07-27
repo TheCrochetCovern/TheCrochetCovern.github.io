@@ -141,22 +141,36 @@ function renderCart() {
 
     total += priceToNumber(item.price);
 
+    const parts = item.name.split("(");
+
+    const productName = parts[0].trim();
+
+    const variation = parts[1]
+      ? parts[1].replace(")", "")
+      : "";
+
     cartItems.innerHTML += `
       <div class="cart-item">
 
         <img
           src="${item.image}"
           class="cart-thumb"
-          alt="${item.name}"
+          alt="${productName}"
         >
 
         <div class="cart-info">
 
-          <strong>${item.name}</strong>
+          <strong>${productName}</strong>
 
-          <span class="cart-price">
+          ${
+            variation
+              ? `<div class="cart-variation">${variation}</div>`
+              : ""
+          }
+
+          <div class="cart-price">
             £${item.price}
-          </span>
+          </div>
 
         </div>
 
@@ -171,6 +185,7 @@ function renderCart() {
   });
 
   cartTotal.textContent = "£" + total.toFixed(2);
+
 }
 
 function clearCart(){
@@ -185,58 +200,6 @@ function clearCart(){
 
 }
 
-  let total = 0;
-
-  cart.forEach((item, index) => {
-    total += priceToNumber(item.price);
-
-   const parts = item.name.split("(");
-
-const productName = parts[0].trim();
-
-const variation = parts[1]
-    ? parts[1].replace(")", "")
-    : "";
-
-cartItems.innerHTML += `
-<div class="cart-item">
-
-    <img
-        src="${item.image}"
-        class="cart-image"
-        alt="${productName}"
-    >
-
-    <div class="cart-info">
-
-        <strong>${productName}</strong>
-
-        ${
-            variation
-            ? `<div class="cart-variation">${variation}</div>`
-            : ""
-        }
-
-        <div class="cart-price">
-            £${item.price}
-        </div>
-
-    </div>
-
-    <button
-        class="remove-cart-btn"
-        onclick="removeFromCart(${index})">
-
-        🗑
-
-    </button>
-
-</div>
-`;
-  });
-
-  cartTotal.textContent = "£" + total.toFixed(2);
-}
 
 function checkoutCart() {
   if (cart.length === 0) {
