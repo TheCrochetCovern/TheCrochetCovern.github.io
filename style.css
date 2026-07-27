@@ -1682,11 +1682,11 @@ box-shadow:0 4px 12px rgba(0,0,0,.08);
 
 }
 
-.cart-image{
+.cart-thumb{
 
-width:75px;
-
-height:75px;
+width:60px;
+            
+height:60px;
 
 object-fit:cover;
 
@@ -1696,16 +1696,11 @@ flex-shrink:0;
 
 }
 
-.cart-details{
-
-flex:1;
-
-display:flex;
-
-flex-direction:column;
-
-gap:8px;
-
+.cart-info{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
 }
 
 .cart-details strong{
@@ -1742,7 +1737,7 @@ cursor:pointer;
 
 font-weight:bold;
 
-width:max-content;
+margin-left:auto;
 
 transition:.25s;
 
