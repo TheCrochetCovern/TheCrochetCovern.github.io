@@ -115,6 +115,7 @@ function closeCart() {
 }
 
 function renderCart() {
+
   const cartItems = document.getElementById("cartItems");
   const cartTotal = document.getElementById("cartTotal");
 
@@ -123,10 +124,72 @@ function renderCart() {
   cartItems.innerHTML = "";
 
   if (cart.length === 0) {
-    cartItems.innerHTML = "<p>Your cart is empty.</p>";
+
+    cartItems.innerHTML = `
+      <p style="text-align:center;color:#7a6a6a;">
+        Your basket is feeling a little lonely 🧶
+      </p>
+    `;
+
     cartTotal.textContent = "£0.00";
+
     return;
   }
+
+  let total = 0;
+
+  cart.forEach((item,index)=>{
+
+    total += priceToNumber(item.price);
+
+    cartItems.innerHTML += `
+
+      <div class="cart-item">
+
+        <img
+          src="${item.image}"
+          class="cart-thumb"
+          alt="${item.name}"
+        >
+
+        <div class="cart-info">
+
+          <strong>${item.name}</strong>
+
+          <span class="cart-price">
+            £${item.price}
+          </span>
+
+        </div>
+
+        <button
+          class="cart-remove"
+          onclick="removeFromCart(${index})"
+        >
+          ✕
+        </button>
+
+      </div>
+
+    `;
+
+  });
+
+  cartTotal.textContent = "£" + total.toFixed(2);
+
+}
+
+function clearCart(){
+
+    if(!confirm("Empty your basket?")) return;
+
+    cart=[];
+
+    saveCart();
+
+    renderCart();
+
+}
 
   let total = 0;
 
