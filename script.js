@@ -132,7 +132,6 @@ function renderCart() {
     `;
 
     cartTotal.textContent = "£0.00";
-
     return;
   }
 
@@ -143,7 +142,6 @@ function renderCart() {
     total += priceToNumber(item.price);
 
     cartItems.innerHTML += `
-
       <div class="cart-item">
 
         <img
@@ -164,19 +162,15 @@ function renderCart() {
 
         <button
           class="cart-remove"
-          onclick="removeFromCart(${index})"
-        >
-          ✕
+          onclick="removeFromCart(${index})">
+          ×
         </button>
 
       </div>
-
     `;
-
   });
 
   cartTotal.textContent = "£" + total.toFixed(2);
-
 }
 
 function clearCart(){
