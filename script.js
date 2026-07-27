@@ -133,13 +133,49 @@ function renderCart() {
   cart.forEach((item, index) => {
     total += priceToNumber(item.price);
 
-    cartItems.innerHTML += `
-      <div class="cart-item">
-        <strong>${item.name}</strong>
-        <span>£${item.price}</span>
-        <button class="btn" onclick="removeFromCart(${index})">Remove</button>
-      </div>
-    `;
+   const parts = item.name.split("(");
+
+const productName = parts[0].trim();
+
+const variation = parts[1]
+    ? parts[1].replace(")", "")
+    : "";
+
+cartItems.innerHTML += `
+<div class="cart-item">
+
+    <img
+        src="${item.image}"
+        class="cart-image"
+        alt="${productName}"
+    >
+
+    <div class="cart-info">
+
+        <strong>${productName}</strong>
+
+        ${
+            variation
+            ? `<div class="cart-variation">${variation}</div>`
+            : ""
+        }
+
+        <div class="cart-price">
+            £${item.price}
+        </div>
+
+    </div>
+
+    <button
+        class="remove-cart-btn"
+        onclick="removeFromCart(${index})">
+
+        🗑
+
+    </button>
+
+</div>
+`;
   });
 
   cartTotal.textContent = "£" + total.toFixed(2);
