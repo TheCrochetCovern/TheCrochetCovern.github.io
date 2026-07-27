@@ -486,3 +486,84 @@ if (
 
 
 window.addEventListener("load", updateLiveStock);
+
+
+// ===========================
+// CHERRY VARIATIONS
+// ===========================
+
+function setupCherryVariation(
+    selectId,
+    orderId,
+    cartId
+) {
+
+    const select = document.getElementById(selectId);
+
+    if (!select) return;
+
+    function currentProduct(){
+
+        const option = select.options[select.selectedIndex];
+
+        return {
+
+            name: option.value,
+
+            image: option.dataset.image,
+
+            price: "5.00",
+
+            suitable: "3+",
+
+            stock: "Available"
+
+        };
+
+    }
+
+    document.getElementById(orderId).onclick = () => {
+
+        const p = currentProduct();
+
+        orderProduct(
+            p.name,
+            p.price,
+            p.image,
+            p.suitable,
+            p.stock
+        );
+
+    };
+
+    document.getElementById(cartId).onclick = () => {
+
+        const p = currentProduct();
+
+        addToCart(
+            p.name,
+            p.price,
+            p.image,
+            p.suitable,
+            p.stock
+        );
+
+    };
+
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    setupCherryVariation(
+        "pinkCherrySelect",
+        "pinkCherryOrder",
+        "pinkCherryCart"
+    );
+
+    setupCherryVariation(
+        "lightPinkCherrySelect",
+        "lightPinkCherryOrder",
+        "lightPinkCherryCart"
+    );
+
+});
