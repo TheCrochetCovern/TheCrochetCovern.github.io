@@ -97,10 +97,16 @@ function removeFromCart(index) {
   renderCart();
 }
 
-function clearCart() {
-  cart = [];
-  saveCart();
-  renderCart();
+function clearCart(ask = true){
+
+    if(ask && !confirm("Empty your basket?")) return;
+
+    cart = [];
+
+    saveCart();
+
+    renderCart();
+
 }
 
 function openCart() {
@@ -306,9 +312,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        if (selectedProduct.name.startsWith("Cart Order")) {
-          clearCart();
-        }
+      if (selectedProduct.name.startsWith("Cart Order")) {
+    clearCart(false);
+}
 
        localStorage.setItem("lastCheckoutId", checkoutData.checkoutId);
 localStorage.setItem("lastCustomerEmail", formData.get("Email"));
