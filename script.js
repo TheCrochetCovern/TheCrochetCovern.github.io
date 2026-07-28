@@ -194,17 +194,6 @@ function renderCart() {
 
 }
 
-function clearCart(){
-
-    if(!confirm("Empty your basket?")) return;
-
-    cart=[];
-
-    saveCart();
-
-    renderCart();
-
-}
 
 
 function checkoutCart() {
