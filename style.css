@@ -1750,3 +1750,18 @@ background:#c98f8f;
 transform:translateY(-2px);
 
 }
+
+/* Accessories product layout */
+.products-grid,
+.shop-grid,
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    align-items: start;
+}
+
+/* Individual product cards */
+.card {
+    height: 100%;
+}
