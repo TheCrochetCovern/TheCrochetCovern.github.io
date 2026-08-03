@@ -633,14 +633,16 @@ setupCherryVariation(
 // Hero Hanger Display Image
 // ===============================
 
-function updateHeroVariation(select){
+function updateHeroVariation(select) {
 
     const option = select.options[select.selectedIndex];
 
+    // Change the displayed image
     document.getElementById("heroDisplayImage").src =
         option.dataset.image;
 
-    document.getElementById("heroOrder").onclick = () => {
+    // Update the Order button
+    document.getElementById("heroHangerOrder").onclick = () => {
 
         orderProduct(
             option.value,
@@ -652,7 +654,8 @@ function updateHeroVariation(select){
 
     };
 
-    document.getElementById("heroCart").onclick = () => {
+    // Update the Add to Cart button
+    document.getElementById("heroHangerCart").onclick = () => {
 
         addToCart(
             option.value,
@@ -665,3 +668,13 @@ function updateHeroVariation(select){
     };
 
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const heroSelect = document.getElementById("heroHangerSelect");
+
+    if (heroSelect) {
+        updateHeroVariation(heroSelect);
+    }
+
+});
