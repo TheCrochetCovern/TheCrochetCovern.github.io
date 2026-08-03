@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessories | The Crochet Covern</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#e8dcd6">
+
+<script src="script.js" defer></script>
+</head>
+
+<body>
+
+<header>
+  <h1>The Crochet Covern</h1>
+  <p>Handmade Crochet Accessories</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="newborn.html">Newborn Safe</a>
+  <a href="toys.html">3+</a>
+  <a href="keyrings.html">Keyrings</a>
+  <a href="accessories.html">Accessories</a>
+  <a href="seasonal.html">Seasonal</a>
+  <a href="contact.html">Contact</a>
+
+  <button class="btn cart-btn" onclick="openCart()">
+    🛒 Cart (<span id="cartCount">0</span>)
+  </button>
+</nav>
+
+<h2 class="section-title">✨ Crochet Accessories</h2>
+
+<p class="section-note">
+Handmade crochet accessories for your home, car and everyday adventures.
+</p>
+
+<!-- ========================= -->
+<!-- CAR -->
+<!-- ========================= -->
+
+<h2 class="section-title">🚗 Car</h2>
+
+<section class="products">
+
+<!-- Add your car accessories here -->
+
+</section>
+
+<!-- ========================= -->
+<!-- HOME -->
+<!-- ========================= -->
+
+<h2 class="section-title">🏡 Home</h2>
+
+<section class="products">
+
+<div class="card">
+
+<h3>✨ Products Coming Soon ✨</h3>
+
+<p>
+I'm busy crocheting some beautiful home accessories.
+Check back soon to see what's arrived!
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- EVERYDAY -->
+<!-- ========================= -->
+
+<h2 class="section-title">👜 Everyday</h2>
+
+<section class="products">
+
+<div class="card">
+
+<h3>✨ Products Coming Soon ✨</h3>
+
+<p>
+New everyday crochet accessories are currently being made.
+Come back soon!
+</p>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- READING -->
+<!-- ========================= -->
+
+<h2 class="section-title">📚 Reading</h2>
+
+<section class="products">
+
+<div class="card">
+
+<h3>✨ Products Coming Soon ✨</h3>
+
+<p>
+Bookmarks, book sleeves and more cosy reading accessories are on their way.
+</p>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 The Crochet Covern • Handmade with care
+</footer>
+
+<!-- ========================= -->
+<!-- ORDER MODAL -->
+<!-- ========================= -->
+
+<div id="orderModal" class="order-modal">
+  <div class="order-box">
+
+    <button class="close-modal" onclick="closeOrderModal()">×</button>
+
+    <span class="handmade">Handmade by Melodie</span>
+
+    <img id="modalImage" class="modal-product-img" alt="Selected crochet product">
+
+    <h2 id="modalProductName"></h2>
+
+    <p id="modalPrice" class="price"></p>
+
+    <p class="order-detail">
+      <strong>Suitable from:</strong>
+      <span id="modalSuitable"></span>
+    </p>
+
+    <p class="order-detail">
+      <strong>Stock:</strong>
+      <span id="modalStock"></span>
+    </p>
+
+    <form id="checkoutForm">
+
+      <input type="hidden" name="Product" id="orderFormProduct">
+      <input type="hidden" name="Price" id="orderFormPrice">
+      <input type="hidden" name="SumUp Link" id="orderFormSumUp">
+
+      <input type="text" name="Full Name" placeholder="Full name" required>
+
+      <input type="email" name="Email" placeholder="Email address" required>
+
+      <input type="text" name="Address" placeholder="Address" required>
+
+      <input type="text" name="Town or City" placeholder="Town / City" required>
+
+      <input type="text" name="Postcode" placeholder="Postcode" required>
+
+      <textarea name="Order Notes" placeholder="Order notes, colour choice, or delivery notes"></textarea>
+
+      <div class="order-actions">
+
+        <button class="btn pay-btn" type="submit">
+          🛒 Continue to Payment
+        </button>
+
+        <button class="btn contact-btn" type="button" onclick="contactOrder()">
+          💌 Contact Melodie
+        </button>
+
+        <button class="btn cancel-btn" type="button" onclick="closeOrderModal()">
+          Continue Shopping
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+<!-- ========================= -->
+<!-- CART -->
+<!-- ========================= -->
+
+<div id="cartModal" class="order-modal">
+
+<div class="order-box">
+
+<button class="close-modal" onclick="closeCart()">×</button>
+
+<span class="handmade">
+Your Basket
+</span>
+
+<h2>
+Shopping Cart
+</h2>
+
+<div id="cartItems"></div>
+
+<p class="price">
+Total:
+<span id="cartTotal">£0.00</span>
+</p>
+
+<div class="order-actions">
+
+<button class="btn pay-btn" onclick="checkoutCart()">
+🛒 Checkout
+</button>
+
+<button class="btn" onclick="clearCart()">
+🗑 Empty Basket
+</button>
+
+<button class="btn cancel-btn" onclick="closeCart()">
+Continue Shopping
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
