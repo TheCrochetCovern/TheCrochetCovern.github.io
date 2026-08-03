@@ -622,3 +622,46 @@ document.addEventListener("DOMContentLoaded",()=>{
     );
 
 });
+
+setupCherryVariation(
+    "heroHangerSelect",
+    "heroHangerOrder",
+    "heroHangerCart"
+);
+
+// ===============================
+// Hero Hanger Display Image
+// ===============================
+
+function updateHeroVariation(select){
+
+    const option = select.options[select.selectedIndex];
+
+    document.getElementById("heroDisplayImage").src =
+        option.dataset.image;
+
+    document.getElementById("heroOrder").onclick = () => {
+
+        orderProduct(
+            option.value,
+            "7.00",
+            option.dataset.image,
+            "3+",
+            document.getElementById("heroStock").textContent
+        );
+
+    };
+
+    document.getElementById("heroCart").onclick = () => {
+
+        addToCart(
+            option.value,
+            "7.00",
+            option.dataset.image,
+            "3+",
+            document.getElementById("heroStock").textContent
+        );
+
+    };
+
+}
