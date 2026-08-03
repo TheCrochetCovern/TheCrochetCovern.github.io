@@ -553,26 +553,30 @@ function setupCherryVariation(
 
     if (!select) return;
 
-    function currentProduct(){
+ function currentProduct(){
 
-        const option = select.options[select.selectedIndex];
+    const option = select.options[select.selectedIndex];
 
-        return {
+    const card = select.closest(".card");
+    const mainImage = card.querySelector(".photo-slider img");
 
-            name: option.value,
-
-            image: option.dataset.image,
-
-            price: "5.00",
-
-            suitable: "3+",
-
-            stock: "Available"
-
-        };
-
+    if(mainImage){
+        mainImage.src = option.dataset.image;
+        mainImage.alt = option.value;
     }
 
+    return {
+        name: option.value,
+        image: option.dataset.image,
+        price: "5.00",
+        suitable: "3+",
+        stock: "Available"
+    };
+}
+
+currentProduct();
+
+select.addEventListener("change", currentProduct);
     document.getElementById(orderId).onclick = () => {
 
         const p = currentProduct();
