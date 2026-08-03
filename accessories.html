@@ -48,65 +48,41 @@ Handmade crochet accessories for your home, car and everyday adventures.
 <div class="card">
 
 <div class="photo-slider">
-
-<img
-id="heroDisplayImage"
-src="images/hero-collection.jpg"
-alt="Hero Rear View Mirror Hanger Collection">
-
+<img src="images/spiderman-hanger.jpg" alt="Spider-Man Rear View Mirror Hanger">
 </div>
 
-<h3>Hero Rear View Mirror Hanger Collection</h3>
+<h3>Spider-Man Rear View Mirror Hanger</h3>
 
 <p>
-Choose your favourite superhero to keep you company on every drive.
-Each hanger is handmade from soft plush yarn and hangs from your rear-view mirror.
+A handmade crochet Spider-Man rear view mirror hanger.
+Perfect for Marvel fans and a fun companion on every drive.
 </p>
-
-<label><strong>Choose Your Hero</strong></label>
-
-<select
-id="heroHangerSelect"
-class="variation-select"
-onchange="updateHeroVariation(this)">
-
-<option
-value="Spider-Man Rear View Mirror Hanger"
-data-image="images/spiderman-hanger.jpg">
-🕷 Spider-Man
-</option>
-
-<option
-value="Batman Rear View Mirror Hanger"
-data-image="images/batman-hanger.jpg">
-🦇 Batman
-</option>
-
-</select>
 
 <p><strong>Suitable from:</strong> 3+</p>
 
 <p><strong>Stock:</strong>
-
-<span
-id="heroStock"
-class="stock-badge">
-2 available
-</span>
-
+<span class="stock-badge">Loading...</span>
 </p>
 
 <p class="price">£7.00</p>
 
-<button
-id="heroHangerOrder"
-class="btn">
+<button class="btn" onclick="orderProduct(
+'Spider-Man Rear View Mirror Hanger',
+'7.00',
+'images/spiderman-hanger.jpg',
+'3+',
+'Loading...'
+)">
 Order
 </button>
 
-<button
-id="heroHangerCart"
-class="btn">
+<button class="btn" onclick="addToCart(
+'Spider-Man Rear View Mirror Hanger',
+'7.00',
+'images/spiderman-hanger.jpg',
+'3+',
+'Loading...'
+)">
 🛒 Add to Cart
 </button>
 
