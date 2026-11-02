@@ -390,6 +390,89 @@ function chooseMiniCowColour() {
     "1 Available"
   );
 }
+
+
+/* TRICERATOPS COLOUR SELECTION */
+
+function chooseTriceratopsColour(action) {
+
+  const colour = prompt(
+    "Which Triceratops would you like?\n\n" +
+    "1. Red Dino\n" +
+    "2. Orange Dino\n" +
+    "3. Green Dino\n" +
+    "4. Blue Dino"
+  );
+
+  if (!colour) return;
+
+  const choice = colour.toLowerCase().trim();
+
+  const dinosaurs = {
+    "1": {
+      name: "Red Dino",
+      image: "images/Red_Dino1.jpg"
+    },
+    "2": {
+      name: "Orange Dino",
+      image: "images/Orange_Dino1.jpg"
+    },
+    "3": {
+      name: "Green Dino",
+      image: "images/Green_Dino1.jpg"
+    },
+    "4": {
+      name: "Blue Dino",
+      image: "images/Blue_Dino1.jpg"
+    }
+  };
+
+  const colourNumbers = {
+    "red": "1",
+    "red dino": "1",
+    "orange": "2",
+    "orange dino": "2",
+    "green": "3",
+    "green dino": "3",
+    "blue": "4",
+    "blue dino": "4"
+  };
+
+  const selected = dinosaurs[choice] ||
+    dinosaurs[colourNumbers[choice]];
+
+  if (!selected) {
+    alert("Please choose Red, Orange, Green or Blue.");
+    return;
+  }
+
+  const productName =
+    "Triceratops Bundle (" + selected.name + ")";
+
+  if (action === "order") {
+
+    orderProduct(
+      productName,
+      "7.00",
+      selected.image,
+      "3+",
+      "1 Available"
+    );
+
+  } else if (action === "cart") {
+
+    addToCart(
+      productName,
+      "7.00",
+      selected.image,
+      "3+",
+      "1 Available"
+    );
+
+  }
+
+}
+
 /* PAYMENT RETURN CHECK */
 
 window.addEventListener("load", async () => {
