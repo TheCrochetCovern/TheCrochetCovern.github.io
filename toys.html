@@ -284,22 +284,163 @@ Cute handmade collectibles, plushies, gifts and room decor.
 
 <div class="card">
 
-  <div class="photo-slider">
+<div class="photo-slider">
 
-    <img src="images/Triceratops_Bundle.jpg.PNG"
+  <!-- Default bundle photo -->
+  <img
+    class="triceratops-slide"
+    data-colour="bundle"
+    src="images/Triceratops_Bundle.jpg.PNG"
+    alt="Triceratops Bundle"
+  >
 
-         alt="Triceratops Bundle">
+  <!-- Red Dino -->
+  <img
+    class="triceratops-slide"
+    data-colour="red"
+    src="images/Red_Dino1.jpg"
+    alt="Red Dino"
+    hidden
+  >
 
-    <img src="images/Red_Dino1.jpg" alt="Red Dino">
-    <img src="images/Red_Dino2.jpg" alt="Red Dino">
-    <img src="images/Orange_Dino1.jpg" alt="Orange Dino">
-    <img src="images/Orange_Dino2.jpg" alt="Orange Dino">
-    <img src="images/Green_Dino1.jpg" alt="Green Dino">
-    <img src="images/Green_Dino2.jpg" alt="Green Dino">
-    <img src="images/Blue_Dino1.jpg" alt="Blue Dino">
-    <img src="images/Blue_Dino2.jpg" alt="Blue Dino">
+  <img
+    class="triceratops-slide"
+    data-colour="red"
+    src="images/Red_Dino2.jpg"
+    alt="Red Dino"
+    hidden
+  >
 
-  </div>
+  <!-- Orange Dino -->
+  <img
+    class="triceratops-slide"
+    data-colour="orange"
+    src="images/Orange_Dino1.jpg"
+    alt="Orange Dino"
+    hidden
+  >
+
+  <img
+    class="triceratops-slide"
+    data-colour="orange"
+    src="images/Orange_Dino2.jpg"
+    alt="Orange Dino"
+    hidden
+  >
+
+  <!-- Green Dino -->
+  <img
+    class="triceratops-slide"
+    data-colour="green"
+    src="images/Green_Dino1.jpg"
+    alt="Green Dino"
+    hidden
+  >
+
+  <img
+    class="triceratops-slide"
+    data-colour="green"
+    src="images/Green_Dino2.jpg"
+    alt="Green Dino"
+    hidden
+  >
+
+  <!-- Blue Dino -->
+  <img
+    class="triceratops-slide"
+    data-colour="blue"
+    src="images/Blue_Dino1.jpg"
+    alt="Blue Dino"
+    hidden
+  >
+
+  <img
+    class="triceratops-slide"
+    data-colour="blue"
+    src="images/Blue_Dino2.jpg"
+    alt="Blue Dino"
+    hidden
+  >
+
+</div><div class="photo-slider">
+
+  <!-- Default bundle photo -->
+  <img
+    class="triceratops-slide"
+    data-colour="bundle"
+    src="images/Triceratops_Bundle.jpg.PNG"
+    alt="Triceratops Bundle"
+  >
+
+  <!-- Red Dino -->
+  <img
+    class="triceratops-slide"
+    data-colour="red"
+    src="images/Red_Dino1.jpg"
+    alt="Red Dino"
+    hidden
+  >
+
+  <img
+    class="triceratops-slide"
+    data-colour="red"
+    src="images/Red_Dino2.jpg"
+    alt="Red Dino"
+    hidden
+  >
+
+  <!-- Orange Dino -->
+  <img
+    class="triceratops-slide"
+    data-colour="orange"
+    src="images/Orange_Dino1.jpg"
+    alt="Orange Dino"
+    hidden
+  >
+
+  <img
+    class="triceratops-slide"
+    data-colour="orange"
+    src="images/Orange_Dino2.jpg"
+    alt="Orange Dino"
+    hidden
+  >
+
+  <!-- Green Dino -->
+  <img
+    class="triceratops-slide"
+    data-colour="green"
+    src="images/Green_Dino1.jpg"
+    alt="Green Dino"
+    hidden
+  >
+
+  <img
+    class="triceratops-slide"
+    data-colour="green"
+    src="images/Green_Dino2.jpg"
+    alt="Green Dino"
+    hidden
+  >
+
+  <!-- Blue Dino -->
+  <img
+    class="triceratops-slide"
+    data-colour="blue"
+    src="images/Blue_Dino1.jpg"
+    alt="Blue Dino"
+    hidden
+  >
+
+  <img
+    class="triceratops-slide"
+    data-colour="blue"
+    src="images/Blue_Dino2.jpg"
+    alt="Blue Dino"
+    hidden
+  >
+
+</div>
 
   <h3>Triceratops Bundle</h3>
 
@@ -322,18 +463,11 @@ Cute handmade collectibles, plushies, gifts and room decor.
 <label for="triceratopsSelect">Choose your colour:</label>
 
 <select id="triceratopsSelect">
-  <option value="Red Dino" data-image="images/Red_Dino1.jpg">
-    Red Dino
-  </option>
-  <option value="Orange Dino" data-image="images/Orange_Dino1.jpg">
-    Orange Dino
-  </option>
-  <option value="Green Dino" data-image="images/Green_Dino1.jpg">
-    Green Dino
-  </option>
-  <option value="Blue Dino" data-image="images/Blue_Dino1.jpg">
-    Blue Dino
-  </option>
+  <option value="" selected disabled>Choose colour</option>
+  <option value="red">Red Dino</option>
+  <option value="orange">Orange Dino</option>
+  <option value="green">Green Dino</option>
+  <option value="blue">Blue Dino</option>
 </select>
   
 <button class="btn" id="triceratopsOrder">
