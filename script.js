@@ -350,46 +350,107 @@ window.addEventListener("beforeinstallprompt", event => {
   }
 });
 
-/* SERVICE WORKER */
 
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("service-worker.js").then(registration => {
-      registration.update();
+/* MINI COW DROPDOWN + PHOTO SLIDES */
+
+function setupMiniCowVariation() {
+
+  const select = document.getElementById("cowSelect");
+
+  if (!select) return;
+
+  const card = select.closest(".card");
+  const slides = card.querySelectorAll(".cow-slide");
+
+  const orderButton = document.getElementById("cowOrder");
+  const cartButton = document.getElementById("cowCart");
+
+  const cows = {
+    black: "Black & White Mini Cow",
+    pink: "Pink & Red Mini Cow",
+    brown: "Brown Mini Cow",
+    yellow: "Yellow Mini Cow"
+  };
+
+  function updateSlides() {
+
+    const colour = select.value;
+
+    slides.forEach(slide => {
+      slide.hidden = slide.dataset.colour !== (colour || "collection");
     });
-  });
-}
 
-
-function chooseMiniCowColour() {
-  const colour = prompt(
-    "Which mini cow would you like?\n\n1. Black & White\n2. Pink & Red\n3. Brown"
-  );
-
-  if (!colour) return;
-
-  let choice = colour.toLowerCase();
-  let cowName = "";
-
-  if (choice === "1" || choice.includes("black")) {
-    cowName = "Black & White Mini Cow";
-  } else if (choice === "2" || choice.includes("pink") || choice.includes("red")) {
-    cowName = "Pink Mini Cow";
-  } else if (choice === "3" || choice.includes("brown")) {
-    cowName = "Brown Mini Cow";
-  } else {
-    alert("Please choose Black & White, Pink, or Brown.");
-    return;
   }
 
-  addToCart(
-    cowName,
-    "7.00",
-    "cow-collection-1.jpg",
-    "3+",
-    "1 Available"
-  );
+  function currentProduct() {
+
+    const colour = select.value;
+
+    if (!colour || !cows[colour]) {
+      alert("Please choose a cow colour first!");
+      return null;
+    }
+
+    const firstImage = card.querySelector(
+      '.cow-slide[data-colour="' + colour + '"]'
+    );
+
+    if (!firstImage) {
+      alert("Sorry, we couldn't find that cow photo.");
+      return null;
+    }
+
+    return {
+      name: "Mini Cow Collection (" + cows[colour] + ")",
+      image: firstImage.src,
+      price: "7.00",
+      suitable: "3+",
+      stock: "1 Available"
+    };
+
+  }
+
+  select.addEventListener("change", updateSlides);
+
+  orderButton.addEventListener("click", () => {
+
+    const product = currentProduct();
+
+    if (!product) return;
+
+    orderProduct(
+      product.name,
+      product.price,
+      product.image,
+      product.suitable,
+      product.stock
+    );
+
+  });
+
+  cartButton.addEventListener("click", () => {
+
+    const product = currentProduct();
+
+    if (!product) return;
+
+    addToCart(
+      product.name,
+      product.price,
+      product.image,
+      product.suitable,
+      product.stock
+    );
+
+  });
+
+  updateSlides();
+
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupMiniCowVariation();
+});
 
 
 /* TRICERATOPS DROPDOWN + PHOTO SLIDES */
