@@ -1766,6 +1766,7 @@ transform:translateY(-2px);
     height: 100%;
 }
 
+/* Product photo slider */
 .photo-slider {
     display: flex;
     overflow-x: auto;
@@ -1773,9 +1774,15 @@ transform:translateY(-2px);
     gap: 10px;
 }
 
+/* Slider images */
 .photo-slider img {
     width: 100%;
     min-width: 100%;
     border-radius: 12px;
     scroll-snap-align: start;
+}
+
+/* Hide unselected Triceratops photos */
+.photo-slider img.triceratops-slide[hidden] {
+    display: none !important;
 }
