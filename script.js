@@ -434,7 +434,6 @@ function chooseTriceratopsColour() {
     "1 Available"
   );
 }
-}
 
 /* PAYMENT RETURN CHECK */
 
