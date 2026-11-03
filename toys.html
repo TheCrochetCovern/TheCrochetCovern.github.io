@@ -319,15 +319,28 @@ Cute handmade collectibles, plushies, gifts and room decor.
 
   <p class="price">£7.00 each</p>
 
-  <button class="btn"
+<label for="triceratopsSelect">Choose your colour:</label>
 
-    onclick="chooseTriceratopsColour('order')">
+<select id="triceratopsSelect">
+  <option value="Red Dino" data-image="images/Red_Dino1.jpg">
+    Red Dino
+  </option>
+  <option value="Orange Dino" data-image="images/Orange_Dino1.jpg">
+    Orange Dino
+  </option>
+  <option value="Green Dino" data-image="images/Green_Dino1.jpg">
+    Green Dino
+  </option>
+  <option value="Blue Dino" data-image="images/Blue_Dino1.jpg">
+    Blue Dino
+  </option>
+</select>
+  
+<button class="btn" id="triceratopsOrder">
+  Order
+</button>
 
-    Order
-
-  </button>
-
-  <button class="btn" onclick="chooseTriceratopsColour()">
+<button class="btn" id="triceratopsCart">
   🛒 Add to Cart
 </button>
 
