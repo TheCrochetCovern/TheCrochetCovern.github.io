@@ -394,83 +394,46 @@ function chooseMiniCowColour() {
 
 /* TRICERATOPS COLOUR SELECTION */
 
-function chooseTriceratopsColour(action) {
-
+function chooseTriceratopsColour() {
   const colour = prompt(
-    "Which Triceratops would you like?\n\n" +
-    "1. Red Dino\n" +
-    "2. Orange Dino\n" +
-    "3. Green Dino\n" +
-    "4. Blue Dino"
+    "Which Triceratops would you like?\n\n1. Red Dino\n2. Orange Dino\n3. Green Dino\n4. Blue Dino"
   );
 
   if (!colour) return;
 
-  const choice = colour.toLowerCase().trim();
+  let choice = colour.toLowerCase().trim();
+  let dinoName = "";
+  let dinoImage = "";
 
-  const dinosaurs = {
-    "1": {
-      name: "Red Dino",
-      image: "images/Red_Dino1.jpg"
-    },
-    "2": {
-      name: "Orange Dino",
-      image: "images/Orange_Dino1.jpg"
-    },
-    "3": {
-      name: "Green Dino",
-      image: "images/Green_Dino1.jpg"
-    },
-    "4": {
-      name: "Blue Dino",
-      image: "images/Blue_Dino1.jpg"
-    }
-  };
+  if (choice === "1" || choice.includes("red")) {
+    dinoName = "Red Dino";
+    dinoImage = "images/Red_Dino1.jpg";
 
-  const colourNumbers = {
-    "red": "1",
-    "red dino": "1",
-    "orange": "2",
-    "orange dino": "2",
-    "green": "3",
-    "green dino": "3",
-    "blue": "4",
-    "blue dino": "4"
-  };
+  } else if (choice === "2" || choice.includes("orange")) {
+    dinoName = "Orange Dino";
+    dinoImage = "images/Orange_Dino1.jpg";
 
-  const selected = dinosaurs[choice] ||
-    dinosaurs[colourNumbers[choice]];
+  } else if (choice === "3" || choice.includes("green")) {
+    dinoName = "Green Dino";
+    dinoImage = "images/Green_Dino1.jpg";
 
-  if (!selected) {
+  } else if (choice === "4" || choice.includes("blue")) {
+    dinoName = "Blue Dino";
+    dinoImage = "images/Blue_Dino1.jpg";
+
+  } else {
     alert("Please choose Red, Orange, Green or Blue.");
     return;
   }
 
-  const productName =
-    "Triceratops Bundle (" + selected.name + ")";
-
-  if (action === "order") {
-
-    orderProduct(
-      productName,
-      "7.00",
-      selected.image,
-      "3+",
-      "1 Available"
-    );
-
-  } else if (action === "cart") {
-
-    addToCart(
-      productName,
-      "7.00",
-      selected.image,
-      "3+",
-      "1 Available"
-    );
-
-  }
-
+  addToCart(
+    "Triceratops Bundle - " + dinoName,
+    "7.00",
+    dinoImage,
+    "3+",
+    "1 Available"
+  );
+}
 }
 
 /* PAYMENT RETURN CHECK */
