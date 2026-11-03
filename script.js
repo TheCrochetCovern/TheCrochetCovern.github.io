@@ -403,33 +403,95 @@ function setupTriceratopsVariation() {
   const card = select.closest(".card");
   const slides = card.querySelectorAll(".triceratops-slide");
 
+  const orderButton = document.getElementById("triceratopsOrder");
+  const cartButton = document.getElementById("triceratopsCart");
+
+  const dinosaurs = {
+    red: "Red Dino",
+    orange: "Orange Dino",
+    green: "Green Dino",
+    blue: "Blue Dino"
+  };
+
   function updateSlides() {
 
     const colour = select.value;
 
     slides.forEach(slide => {
-
-      if (!colour) {
-        // Show the bundle photo before a colour is selected
-        slide.hidden = slide.dataset.colour !== "bundle";
-      } else {
-        // Show only the selected colour's photos
-        slide.hidden = slide.dataset.colour !== colour;
-      }
-
+      slide.hidden = slide.dataset.colour !== (colour || "bundle");
     });
+
+  }
+
+  function currentProduct() {
+
+    const colour = select.value;
+
+    if (!colour || !dinosaurs[colour]) {
+      alert("Please choose a dinosaur colour first!");
+      return null;
+    }
+
+    const firstImage = card.querySelector(
+      '.triceratops-slide[data-colour="' + colour + '"]'
+    );
+
+    if (!firstImage) {
+      alert("Sorry, we couldn't find that dinosaur photo.");
+      return null;
+    }
+
+    return {
+      name: "Triceratops Bundle (" + dinosaurs[colour] + ")",
+      image: firstImage.src,
+      price: "7.00",
+      suitable: "3+",
+      stock: "1 Available"
+    };
+
   }
 
   select.addEventListener("change", updateSlides);
 
-  // Set the default photo when the page loads
+  orderButton.addEventListener("click", () => {
+
+    const product = currentProduct();
+
+    if (!product) return;
+
+    orderProduct(
+      product.name,
+      product.price,
+      product.image,
+      product.suitable,
+      product.stock
+    );
+
+  });
+
+  cartButton.addEventListener("click", () => {
+
+    const product = currentProduct();
+
+    if (!product) return;
+
+    addToCart(
+      product.name,
+      product.price,
+      product.image,
+      product.suitable,
+      product.stock
+    );
+
+  });
+
   updateSlides();
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   setupTriceratopsVariation();
 });
-
 /* PAYMENT RETURN CHECK */
 
 window.addEventListener("load", async () => {
