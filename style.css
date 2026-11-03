@@ -1779,3 +1779,9 @@ transform:translateY(-2px);
     border-radius: 12px;
     scroll-snap-align: start;
 }
+
+/* TRICERATOPS SLIDES */
+
+.triceratops-slide[hidden] {
+  display: none !important;
+}
