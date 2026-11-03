@@ -392,48 +392,75 @@ function chooseMiniCowColour() {
 }
 
 
-/* TRICERATOPS COLOUR SELECTION */
+/* TRICERATOPS DROPDOWN */
 
-function chooseTriceratopsColour() {
-  const colour = prompt(
-    "Which Triceratops would you like?\n\n1. Red Dino\n2. Orange Dino\n3. Green Dino\n4. Blue Dino"
-  );
+function setupTriceratopsVariation() {
 
-  if (!colour) return;
+  const select = document.getElementById("triceratopsSelect");
 
-  let choice = colour.toLowerCase().trim();
-  let dinoName = "";
-  let dinoImage = "";
+  if (!select) return;
 
-  if (choice === "1" || choice.includes("red")) {
-    dinoName = "Red Dino";
-    dinoImage = "images/Red_Dino1.jpg";
+  const card = select.closest(".card");
+  const mainImage = card.querySelector(".photo-slider img");
 
-  } else if (choice === "2" || choice.includes("orange")) {
-    dinoName = "Orange Dino";
-    dinoImage = "images/Orange_Dino1.jpg";
+  const orderButton = document.getElementById("triceratopsOrder");
+  const cartButton = document.getElementById("triceratopsCart");
 
-  } else if (choice === "3" || choice.includes("green")) {
-    dinoName = "Green Dino";
-    dinoImage = "images/Green_Dino1.jpg";
+  function currentProduct() {
 
-  } else if (choice === "4" || choice.includes("blue")) {
-    dinoName = "Blue Dino";
-    dinoImage = "images/Blue_Dino1.jpg";
+    const option = select.options[select.selectedIndex];
 
-  } else {
-    alert("Please choose Red, Orange, Green or Blue.");
-    return;
+    if (mainImage) {
+      mainImage.src = option.dataset.image;
+      mainImage.alt = option.value;
+    }
+
+    return {
+      name: "Triceratops Bundle (" + option.value + ")",
+      image: option.dataset.image,
+      price: "7.00",
+      suitable: "3+",
+      stock: "1 Available"
+    };
   }
 
-  addToCart(
-    "Triceratops Bundle - " + dinoName,
-    "7.00",
-    dinoImage,
-    "3+",
-    "1 Available"
-  );
+  currentProduct();
+
+  select.addEventListener("change", currentProduct);
+
+  orderButton.onclick = () => {
+
+    const p = currentProduct();
+
+    orderProduct(
+      p.name,
+      p.price,
+      p.image,
+      p.suitable,
+      p.stock
+    );
+
+  };
+
+  cartButton.onclick = () => {
+
+    const p = currentProduct();
+
+    addToCart(
+      p.name,
+      p.price,
+      p.image,
+      p.suitable,
+      p.stock
+    );
+
+  };
+
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupTriceratopsVariation();
+});
 
 /* PAYMENT RETURN CHECK */
 
