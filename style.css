@@ -1786,3 +1786,7 @@ transform:translateY(-2px);
 .photo-slider img.triceratops-slide[hidden] {
     display: none !important;
 }
+
+.cow-slide[hidden] {
+  display: none !important;
+}
