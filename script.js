@@ -392,7 +392,7 @@ function chooseMiniCowColour() {
 }
 
 
-/* TRICERATOPS DROPDOWN */
+/* TRICERATOPS DROPDOWN + PHOTO SLIDES */
 
 function setupTriceratopsVariation() {
 
@@ -401,60 +401,89 @@ function setupTriceratopsVariation() {
   if (!select) return;
 
   const card = select.closest(".card");
-  const mainImage = card.querySelector(".photo-slider img");
+  const slides = card.querySelectorAll(".triceratops-slide");
 
   const orderButton = document.getElementById("triceratopsOrder");
   const cartButton = document.getElementById("triceratopsCart");
 
+  const dinosaurs = {
+    red: "Red Dino",
+    orange: "Orange Dino",
+    green: "Green Dino",
+    blue: "Blue Dino"
+  };
+
+  function updateSlides() {
+
+    const colour = select.value;
+
+    slides.forEach(slide => {
+
+      slide.hidden = slide.dataset.colour !==
+        (colour || "bundle");
+
+    });
+
+  }
+
   function currentProduct() {
 
-    const option = select.options[select.selectedIndex];
+    const colour = select.value;
 
-    if (mainImage) {
-      mainImage.src = option.dataset.image;
-      mainImage.alt = option.value;
+    if (!colour || !dinosaurs[colour]) {
+      alert("Please choose a dinosaur colour first!");
+      return null;
     }
 
+    const firstImage = card.querySelector(
+      '.triceratops-slide[data-colour="' + colour + '"]'
+    );
+
     return {
-      name: "Triceratops Bundle (" + option.value + ")",
-      image: option.dataset.image,
+      name: "Triceratops Bundle (" + dinosaurs[colour] + ")",
+      image: firstImage.src,
       price: "7.00",
       suitable: "3+",
       stock: "1 Available"
     };
+
   }
 
-  currentProduct();
+  select.addEventListener("change", updateSlides);
 
-  select.addEventListener("change", currentProduct);
+  orderButton.addEventListener("click", () => {
 
-  orderButton.onclick = () => {
+    const product = currentProduct();
 
-    const p = currentProduct();
+    if (!product) return;
 
     orderProduct(
-      p.name,
-      p.price,
-      p.image,
-      p.suitable,
-      p.stock
+      product.name,
+      product.price,
+      product.image,
+      product.suitable,
+      product.stock
     );
 
-  };
+  });
 
-  cartButton.onclick = () => {
+  cartButton.addEventListener("click", () => {
 
-    const p = currentProduct();
+    const product = currentProduct();
+
+    if (!product) return;
 
     addToCart(
-      p.name,
-      p.price,
-      p.image,
-      p.suitable,
-      p.stock
+      product.name,
+      product.price,
+      product.image,
+      product.suitable,
+      product.stock
     );
 
-  };
+  });
+
+  updateSlides();
 
 }
 
